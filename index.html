@@ -151,7 +151,41 @@
         #ranking-table th { color: var(--primary-color); }
         .rank-position { font-weight: bold; text-align: center; }
 
-        footer { text-align: center; padding: 2rem 0; margin-top: 2rem; color: #777; }
+        /* Rodapé Ajustado */
+        footer {
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 2rem;
+            background-color: var(--secondary-color);
+            border-top: 1px solid #444;
+        }
+        
+        .footer-highlight {
+            color: var(--primary-color);
+            font-style: italic;
+            font-size: 0.9rem;
+            margin: 0 0 1rem 0;
+        }
+        
+        .footer-credits {
+            color: #ccc;
+            font-size: 1rem;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .footer-credits span {
+            display: block;
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 0.25rem;
+        }
+        
+        .footer-copyright {
+            color: #777;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
 
         /* Responsividade */
         @media (max-width: 992px) {
@@ -198,8 +232,13 @@
         </section>
     </main>
 
-    <footer>
-        <p>© 2025 Prefeitura de Petrolina - Secretaria de Comunicação</p>
+    <footer class="container">
+        <p class="footer-highlight">As informações foram coletadas e validadas no último dia útil.</p>
+        <p class="footer-credits">
+            <span>Núcleo Digital da Secretaria de Comunicação:</span>
+            Raphael Rosendo e Douglas Rios
+        </p>
+        <p class="footer-copyright">© 2025 Prefeitura de Petrolina - Secretaria de Comunicação</p>
     </footer>
 
     <!-- JavaScript Integrado -->
