@@ -10,190 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS Integrado -->
-    <style>
-        :root {
-            --primary-color: #FFC107; /* Amarelo */
-            --secondary-color: #2a2a38; /* Roxo escuro/cinza do card */
-            --dark-color: #1c1c24; /* Fundo mais escuro */
-            --light-color: #F8F9FA; /* Branco/Cinza Claro */
-            --font-family: 'Poppins', sans-serif;
-            --gold: #FFD700;
-            --silver: #C0C0C0;
-            --bronze: #CD7F32;
-        }
-
-        body {
-            font-family: var(--font-family);
-            margin: 0;
-            background-color: var(--dark-color);
-            color: var(--light-color);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 2rem;
-        }
-
-        header {
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        header h1 {
-            font-size: 2.8rem;
-            color: var(--primary-color);
-            margin: 0;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        /* Seção do Pódio */
-        .podium-section {
-            padding: 2rem 0;
-            text-align: center;
-        }
-        
-        .podium-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 2rem;
-            color: var(--light-color);
-        }
-
-        .podium-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
-            align-items: flex-start; /* Alinha no topo */
-            gap: 1.5rem;
-        }
-        
-        .podium-card {
-            background-color: var(--secondary-color);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: left;
-            border: 1px solid #444;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            box-sizing: border-box;
-        }
-        
-        .podium-card.rank-1 {
-            transform: scale(1.05);
-            border: 2px solid var(--gold);
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.3);
-        }
-        .podium-card.rank-2 { border-top: 5px solid var(--silver); }
-        .podium-card.rank-3 { border-top: 5px solid var(--bronze); }
-        
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-        
-        .card-header .name { font-size: 1.4rem; font-weight: 600; }
-        
-        .card-header .rank-badge {
-            background-color: var(--primary-color);
-            color: var(--dark-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        
-        .card-divider { border: 0; height: 1px; background-color: #444; margin: 0.5rem 0 1.5rem 0; }
-        
-        .card-status { color: var(--primary-color); font-weight: bold; text-align: center; margin-bottom: 1.5rem; font-size: 0.9rem; }
-        
-        .card-metrics { margin-bottom: 2rem; flex-grow: 1; }
-        
-        /* Estilos para o Gráfico de Barras */
-        .metric-bar-container { margin-bottom: 1.2rem; }
-        
-        .metric-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-        }
-        .metric-label span { color: #ccc; }
-        .metric-label strong { color: var(--light-color); font-weight: 600; }
-        
-        .bar-background {
-            height: 12px;
-            background-color: #444;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-        
-        .bar-foreground {
-            height: 100%;
-            width: 0; /* Começa com 0 para animar */
-            background-color: var(--primary-color);
-            border-radius: 6px;
-            transition: width 0.8s ease-out;
-        }
-        
-        .card-button { display: block; background-color: var(--primary-color); color: var(--dark-color); padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: bold; text-align: center; transition: background-color 0.3s ease; margin-top: auto; }
-        .card-button:hover { background-color: #ffda4a; }
-
-        /* Tabela do Ranking Geral */
-        .general-ranking-section h2 { text-align: center; font-size: 2rem; margin-top: 4rem; margin-bottom: 2rem; }
-        .table-container { background-color: var(--secondary-color); padding: 1rem; border-radius: 8px; overflow-x: auto; }
-        #ranking-table { width: 100%; border-collapse: collapse; }
-        #ranking-table th, #ranking-table td { padding: 1rem; text-align: left; border-bottom: 1px solid #444; }
-        #ranking-table th { color: var(--primary-color); }
-        .rank-position { font-weight: bold; text-align: center; }
-
-        /* Rodapé Ajustado */
-        footer {
-            text-align: center;
-            padding: 2.5rem 0;
-            margin-top: 2rem;
-            background-color: var(--secondary-color);
-            border-top: 1px solid #444;
-        }
-        
-        .footer-highlight {
-            color: var(--primary-color);
-            font-style: italic;
-            font-size: 0.9rem;
-            margin: 0 0 1rem 0;
-        }
-        
-        .footer-credits {
-            color: #ccc;
-            font-size: 1rem;
-            margin: 0 0 1.5rem 0;
-        }
-
-        .footer-credits span {
-            display: block;
-            font-size: 0.9rem;
-            color: #aaa;
-            margin-bottom: 0.25rem;
-        }
-        
-        .footer-copyright {
-            color: #777;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-
-        /* Responsividade */
-        @media (max-width: 992px) {
-            .podium-grid { grid-template-columns: 1fr; }
-            .podium-card.rank-1 { order: -2; transform: scale(1); } /* 1º no topo */
-            .podium-card.rank-2 { order: -1; } /* 2º abaixo */
-        }
-    </style>
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -202,11 +20,41 @@
     </header>
 
     <main class="container">
+        <!-- Seção de Metas Principais -->
+        <section class="goals-section">
+            <h2>Metas do Projeto</h2>
+            <div class="goals-grid">
+                <!-- Meta de Servidores Cadastrados -->
+                <div class="goal-card">
+                    <h3>Servidores Cadastrados</h3>
+                    <div class="goal-progress-container">
+                        <div class="goal-progress-bar" id="servers-progress-bar"></div>
+                    </div>
+                    <div class="goal-details">
+                        <span id="current-servers">0</span> / <span>1.000</span>
+                    </div>
+                    <p class="goal-percentage" id="servers-percentage">0%</p>
+                </div>
+
+                <!-- Meta de Seguidores -->
+                <div class="goal-card">
+                    <h3>Seguidores no Instagram</h3>
+                    <div class="goal-progress-container">
+                        <div class="goal-progress-bar" id="followers-progress-bar"></div>
+                    </div>
+                    <div class="goal-details">
+                        <span id="current-followers">0</span> / <span>150.000</span>
+                    </div>
+                    <p class="goal-percentage" id="followers-percentage">0%</p>
+                </div>
+            </div>
+        </section>
+
         <!-- Seção do Pódio para os 3 primeiros -->
         <section class="podium-section">
             <h2>🏆 Pódio das Secretarias 🏆</h2>
             <div class="podium-grid" id="podium-container">
-                <!-- Cards do pódio serão inseridos aqui -->
+                <!-- Cards do pódio serão inseridos aqui via JavaScript -->
             </div>
         </section>
 
@@ -225,7 +73,7 @@
                         </tr>
                     </thead>
                     <tbody id="general-ranking-body">
-                        <!-- Linhas do ranking geral serão inseridas aqui -->
+                        <!-- Linhas do ranking geral serão inseridas aqui via JavaScript -->
                     </tbody>
                 </table>
             </div>
@@ -241,120 +89,7 @@
         <p class="footer-copyright">© 2025 Prefeitura de Petrolina - Secretaria de Comunicação</p>
     </footer>
 
-    <!-- JavaScript Integrado -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            
-            const secretariatsData = [
-                { name: 'Saúde', cadastros: 250, cliques: 580, membros: 240 },
-                { name: 'Educação, Cultura e Esporte', cadastros: 235, cliques: 510, membros: 220 },
-                { name: 'Desenvolvimento Econômico, Turismo e Inovação', cadastros: 218, cliques: 490, membros: 205 },
-                { name: 'Infraestrutura e Mobilidade', cadastros: 190, cliques: 410, membros: 185 },
-                { name: 'Assistência Social e Combate à Fome', cadastros: 182, cliques: 390, membros: 170 },
-                { name: 'Comunicação', cadastros: 170, cliques: 450, membros: 165 },
-                { name: 'Desenvolvimento Rural', cadastros: 155, cliques: 320, membros: 150 },
-                { name: 'Serviços Públicos e Defesa Civil', cadastros: 140, cliques: 300, membros: 135 },
-                { name: 'Governo', cadastros: 125, cliques: 280, membros: 120 },
-                { name: 'Desenvolvimento Urbano, Habitação e Sustentabilidade', cadastros: 115, cliques: 250, membros: 110 },
-                { name: 'Casa Civil', cadastros: 108, cliques: 240, membros: 100 },
-                { name: 'Planejamento, Gestão e Finanças', cadastros: 95, cliques: 210, membros: 90 },
-                { name: 'Segurança Pública', cadastros: 88, cliques: 190, membros: 85 },
-                { name: 'Licitações e Contratos', cadastros: 70, cliques: 150, membros: 65 },
-                { name: 'Receitas Municipais', cadastros: 65, cliques: 140, membros: 60 },
-                { name: 'Procuradoria-Geral do Município', cadastros: 50, cliques: 110, membros: 48 },
-                { name: 'Controladoria-Geral do Município', cadastros: 45, cliques: 100, membros: 42 }
-            ];
-
-            // Critérios de classificação: Cadastros > Cliques > Membros
-            secretariatsData.sort((a, b) => b.cadastros - a.cadastros || b.cliques - a.cliques || b.membros - a.membros);
-
-            const podiumContainer = document.getElementById('podium-container');
-            const generalRankingBody = document.getElementById('general-ranking-body');
-            
-            function renderRankings() {
-                // Pódio é os 3 primeiros
-                const podiumData = secretariatsData.slice(0, 3);
-                // Ranking geral são os restantes
-                const generalRankingData = secretariatsData.slice(3);
-
-                // Popula o pódio na ordem 1, 2, 3
-                podiumContainer.innerHTML = podiumData.map((secretariat, index) => {
-                    return createPodiumCard(secretariat, index + 1);
-                }).join('');
-                
-                // Popula a tabela do ranking geral (a partir do 4º lugar)
-                generalRankingBody.innerHTML = generalRankingData.map((secretariat, index) => {
-                    const rank = index + 4; // Começa a contar do 4
-                    return `
-                        <tr>
-                            <td class="rank-position">${rank}º</td>
-                            <td>${secretariat.name}</td>
-                            <td>${secretariat.cadastros}</td>
-                            <td>${secretariat.cliques}</td>
-                            <td>${secretariat.membros}</td>
-                        </tr>
-                    `;
-                }).join('');
-
-                // Adiciona um pequeno atraso para a animação da barra funcionar no carregamento
-                setTimeout(() => {
-                    document.querySelectorAll('.bar-foreground').forEach(bar => {
-                        bar.style.width = bar.dataset.width;
-                    });
-                }, 100);
-            }
-
-            function createPodiumCard(data, rank) {
-                const rankStatus = { 1: 'LÍDER ABSOLUTO', 2: 'EXCELENTE DESEMPENHO', 3: 'DESTAQUE NO PÓDIO' };
-                
-                // Valores máximos para calcular a porcentagem da barra (um pouco acima do líder)
-                const maxValues = { cadastros: 260, cliques: 600, membros: 250 };
-
-                // Calcula a porcentagem para cada métrica, limitando a 100%
-                const cadastrosPercent = Math.min((data.cadastros / maxValues.cadastros) * 100, 100);
-                const cliquesPercent = Math.min((data.cliques / maxValues.cliques) * 100, 100);
-                const membrosPercent = Math.min((data.membros / maxValues.membros) * 100, 100);
-
-                return `
-                    <div class="podium-card rank-${rank}">
-                        <div class="card-header">
-                            <span class="name">${data.name}</span>
-                            <span class="rank-badge">${rank}º</span>
-                        </div>
-                        <hr class="card-divider">
-                        <p class="card-status">${rankStatus[rank]}</p>
-                        <div class="card-metrics">
-                            
-                            <div class="metric-bar-container">
-                                <div class="metric-label"><span>Cadastros</span><strong>${data.cadastros}</strong></div>
-                                <div class="bar-background">
-                                    <div class="bar-foreground" data-width="${cadastrosPercent}%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="metric-bar-container">
-                                <div class="metric-label"><span>Cliques no Link</span><strong>${data.cliques}</strong></div>
-                                <div class="bar-background">
-                                    <div class="bar-foreground" data-width="${cliquesPercent}%"></div>
-                                </div>
-                            </div>
-                            
-                            <div class="metric-bar-container">
-                                <div class="metric-label"><span>Membros no Grupo</span><strong>${data.membros}</strong></div>
-                                <div class="bar-background">
-                                    <div class="bar-foreground" data-width="${membrosPercent}%"></div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <a href="#" class="card-button">Ver Detalhes</a>
-                    </div>
-                `;
-            }
-
-            renderRankings();
-        });
-    </script>
-
+    <!-- JavaScript Externo -->
+    <script src="script.js"></script>
 </body>
 </html>
