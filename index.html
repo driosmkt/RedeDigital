@@ -20,36 +20,6 @@
     </header>
 
     <main class="container">
-        <!-- Seção de Metas Principais -->
-        <section class="goals-section">
-            <h2>Metas do Projeto</h2>
-            <div class="goals-grid">
-                <!-- Meta de Servidores Cadastrados -->
-                <div class="goal-card">
-                    <h3>Servidores Cadastrados</h3>
-                    <div class="goal-progress-container">
-                        <div class="goal-progress-bar" id="servers-progress-bar"></div>
-                    </div>
-                    <div class="goal-details">
-                        <span id="current-servers">0</span> / <span>1.000</span>
-                    </div>
-                    <p class="goal-percentage" id="servers-percentage">0%</p>
-                </div>
-
-                <!-- Meta de Seguidores -->
-                <div class="goal-card">
-                    <h3>Seguidores no Instagram</h3>
-                    <div class="goal-progress-container">
-                        <div class="goal-progress-bar" id="followers-progress-bar"></div>
-                    </div>
-                    <div class="goal-details">
-                        <span id="current-followers">0</span> / <span>150.000</span>
-                    </div>
-                    <p class="goal-percentage" id="followers-percentage">0%</p>
-                </div>
-            </div>
-        </section>
-
         <!-- Seção do Pódio para os 3 primeiros -->
         <section class="podium-section">
             <h2>🏆 Pódio das Secretarias 🏆</h2>
@@ -76,6 +46,42 @@
                         <!-- Linhas do ranking geral serão inseridas aqui via JavaScript -->
                     </tbody>
                 </table>
+            </div>
+        </section>
+
+        <!-- Seção de Metas Principais (MOVIMOS PARA CÁ) -->
+        <section class="goals-section">
+            <h2>Metas do Projeto</h2>
+            <div class="goals-grid">
+                <!-- Meta de Servidores Cadastrados -->
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <img src="https://www.gstatic.com/images/icons/material/system_gm/2x/group_gm_blue_24dp.png" alt="Ícone de Pessoas" class="goal-icon">
+                        <h3>Servidores Cadastrados</h3>
+                    </div>
+                    <div class="goal-progress-container">
+                        <div class="goal-progress-bar" id="servers-progress-bar"></div>
+                    </div>
+                    <div class="goal-details">
+                        <span id="current-servers">0</span> / <span>1.000</span>
+                    </div>
+                    <p class="goal-percentage" id="servers-percentage">0%</p>
+                </div>
+
+                <!-- Meta de Seguidores -->
+                <div class="goal-card">
+                    <div class="goal-header">
+                        <img src="https://www.gstatic.com/images/icons/material/system/2x/camera_alt_gm_blue_24dp.png" alt="Ícone do Instagram" class="goal-icon">
+                        <h3>Seguidores no Instagram</h3>
+                    </div>
+                    <div class="goal-progress-container">
+                        <div class="goal-progress-bar" id="followers-progress-bar"></div>
+                    </div>
+                    <div class="goal-details">
+                        <span id="current-followers">0</span> / <span>150.000</span>
+                    </div>
+                    <p class="goal-percentage" id="followers-percentage">0%</p>
+                </div>
             </div>
         </section>
     </main>
