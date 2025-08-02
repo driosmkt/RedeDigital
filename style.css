@@ -41,7 +41,7 @@ header h1 {
 .goals-section {
     text-align: center;
     padding: 2rem 0;
-    margin-top: 4rem; /* Espaçamento da tabela acima */
+    margin-top: 4rem;
 }
 
 .goals-section h2 {
@@ -58,24 +58,18 @@ header h1 {
 
 .goal-card {
     background-color: var(--secondary-color);
-    padding: 1.5rem 2rem;
+    padding: 2rem;
     border-radius: 12px;
     border: 1px solid #444;
     text-align: center;
 }
 
-.goal-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1.5rem;
-}
-
 .goal-icon {
-    width: 28px;
-    height: 28px;
-    filter: invert(80%) sepia(50%) saturate(1500%) hue-rotate(5deg); /* Colore o ícone para amarelo */
+    width: 36px;
+    height: 36px;
+    /* Filtro para transformar o ícone em amarelo */
+    filter: invert(80%) sepia(50%) saturate(1500%) hue-rotate(5deg) brightness(1.1);
+    margin-bottom: 1rem;
 }
 
 .goal-card h3 {
@@ -83,6 +77,7 @@ header h1 {
     color: var(--primary-color);
     font-weight: 600;
     margin: 0;
+    margin-bottom: 1.5rem;
 }
 
 .goal-progress-container {
@@ -95,7 +90,7 @@ header h1 {
 
 .goal-progress-bar {
     height: 100%;
-    width: 0; /* Começa em 0 para animar */
+    width: 0;
     background-color: var(--success-color);
     border-radius: 10px;
     transition: width 1.2s ease-out;
@@ -115,7 +110,8 @@ header h1 {
     margin-top: 0.5rem;
 }
 
-/* Seção do Pódio */
+/* --- O restante do CSS permanece igual --- */
+
 .podium-section { padding: 2rem 0; text-align: center; }
 .podium-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
 .podium-grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: flex-start; gap: 1.5rem; }
@@ -137,7 +133,8 @@ header h1 {
 .bar-foreground { height: 100%; width: 0; background-color: var(--primary-color); border-radius: 6px; transition: width 0.8s ease-out; }
 .card-button { display: block; background-color: var(--primary-color); color: var(--dark-color); padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: bold; text-align: center; transition: background-color 0.3s ease; margin-top: auto; }
 .card-button:hover { background-color: #ffda4a; }
-.general-ranking-section h2 { text-align: center; font-size: 2rem; margin-top: 4rem; margin-bottom: 2rem; }
+.general-ranking-section { text-align: center; }
+.general-ranking-section h2 { font-size: 2rem; margin-top: 4rem; margin-bottom: 2rem; }
 .table-container { background-color: var(--secondary-color); padding: 1rem; border-radius: 8px; overflow-x: auto; }
 #ranking-table { width: 100%; border-collapse: collapse; }
 #ranking-table th, #ranking-table td { padding: 1rem; text-align: left; border-bottom: 1px solid #444; }
