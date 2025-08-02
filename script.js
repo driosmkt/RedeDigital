@@ -24,21 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- DADOS DAS METAS ---
     const goalsData = {
         servers: {
-            current: 250, // Total de cadastros (soma dos servidores)
+            current: secretariatsData.reduce((sum, s) => sum + s.cadastros, 0), // Soma automática
             target: 1000
         },
         followers: {
-            // IMPORTANTE: Atualize este valor com o número atual de seguidores
-            current: 95000, 
+            // VALOR ATUALIZADO
+            current: 101925, 
             target: 150000
         }
     };
-
-    // Critérios de classificação: Cadastros > Cliques > Membros
-    secretariatsData.sort((a, b) => b.cadastros - a.cadastros || b.cliques - a.cliques || b.membros - a.membros);
-
-    const podiumContainer = document.getElementById('podium-container');
-    const generalRankingBody = document.getElementById('general-ranking-body');
 
     // Função para renderizar as metas
     function renderGoals() {
@@ -46,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Meta de Servidores
         const serversPercentage = (servers.current / servers.target) * 100;
-        document.getElementById('current-servers').textContent = servers.current;
+        document.getElementById('current-servers').textContent = servers.current.toLocaleString('pt-BR');
         document.getElementById('servers-progress-bar').style.width = `${serversPercentage}%`;
         document.getElementById('servers-percentage').textContent = `${serversPercentage.toFixed(1)}%`;
 
@@ -56,28 +50,25 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('followers-progress-bar').style.width = `${followersPercentage}%`;
         document.getElementById('followers-percentage').textContent = `${followersPercentage.toFixed(1)}%`;
     }
-
+    
     // Função para renderizar os rankings
     function renderRankings() {
+        secretariatsData.sort((a, b) => b.cadastros - a.cadastros || b.cliques - a.cliques || b.membros - a.membros);
+        const podiumContainer = document.getElementById('podium-container');
+        const generalRankingBody = document.getElementById('general-ranking-body');
         const podiumData = secretariatsData.slice(0, 3);
         const generalRankingData = secretariatsData.slice(3);
 
-        podiumContainer.innerHTML = podiumData.map((secretariat, index) => {
-            return createPodiumCard(secretariat, index + 1);
-        }).join('');
-        
-        generalRankingBody.innerHTML = generalRankingData.map((secretariat, index) => {
-            const rank = index + 4;
-            return `
-                <tr>
-                    <td class="rank-position">${rank}º</td>
-                    <td>${secretariat.name}</td>
-                    <td>${secretariat.cadastros}</td>
-                    <td>${secretariat.cliques}</td>
-                    <td>${secretariat.membros}</td>
-                </tr>
-            `;
-        }).join('');
+        podiumContainer.innerHTML = podiumData.map((s, i) => createPodiumCard(s, i + 1)).join('');
+        generalRankingBody.innerHTML = generalRankingData.map((s, i) => `
+            <tr>
+                <td class="rank-position">${i + 4}º</td>
+                <td>${s.name}</td>
+                <td>${s.cadastros}</td>
+                <td>${s.cliques}</td>
+                <td>${s.membros}</td>
+            </tr>
+        `).join('');
 
         setTimeout(() => {
             document.querySelectorAll('.bar-foreground').forEach(bar => {
@@ -89,7 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
     function createPodiumCard(data, rank) {
         const rankStatus = { 1: 'LÍDER ABSOLUTO', 2: 'EXCELENTE DESEMPENHO', 3: 'DESTAQUE NO PÓDIO' };
         const maxValues = { cadastros: 260, cliques: 600, membros: 250 };
-
         const cadastrosPercent = Math.min((data.cadastros / maxValues.cadastros) * 100, 100);
         const cliquesPercent = Math.min((data.cliques / maxValues.cliques) * 100, 100);
         const membrosPercent = Math.min((data.membros / maxValues.membros) * 100, 100);
@@ -105,26 +95,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="card-metrics">
                     <div class="metric-bar-container">
                         <div class="metric-label"><span>Cadastros</span><strong>${data.cadastros}</strong></div>
-                        <div class="bar-background">
-                            <div class="bar-foreground" data-width="${cadastrosPercent}%"></div>
-                        </div>
+                        <div class="bar-background"><div class="bar-foreground" data-width="${cadastrosPercent}%"></div></div>
                     </div>
                     <div class="metric-bar-container">
                         <div class="metric-label"><span>Cliques no Link</span><strong>${data.cliques}</strong></div>
-                        <div class="bar-background">
-                            <div class="bar-foreground" data-width="${cliquesPercent}%"></div>
-                        </div>
+                        <div class="bar-background"><div class="bar-foreground" data-width="${cliquesPercent}%"></div></div>
                     </div>
                     <div class="metric-bar-container">
                         <div class="metric-label"><span>Membros no Grupo</span><strong>${data.membros}</strong></div>
-                        <div class="bar-background">
-                            <div class="bar-foreground" data-width="${membrosPercent}%"></div>
-                        </div>
+                        <div class="bar-background"><div class="bar-foreground" data-width="${membrosPercent}%"></div></div>
                     </div>
                 </div>
                 <a href="#" class="card-button">Ver Detalhes</a>
-            </div>
-        `;
+            </div>`;
     }
 
     // Inicializa a renderização de tudo
