@@ -24,13 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- DADOS DAS METAS ---
     const goalsData = {
         servers: {
-            current: secretariatsData.reduce((sum, s) => sum + s.cadastros, 0), // Soma automática
+            current: secretariatsData.reduce((sum, s) => sum + s.cadastros, 0),
             target: 1000
         },
         followers: {
             // VALOR ATUALIZADO
-            current: 101925, 
-            target: 150000
+            current: 191925, 
+            target: 150000 // A meta continua 150.000, o que significa que foi ultrapassada
         }
     };
 
@@ -39,19 +39,31 @@ document.addEventListener("DOMContentLoaded", () => {
         const { servers, followers } = goalsData;
 
         // Meta de Servidores
-        const serversPercentage = (servers.current / servers.target) * 100;
+        let serversPercentage = (servers.current / servers.target) * 100;
+        // Limita a porcentagem a 100% no máximo para a barra não ultrapassar o limite
+        const serversBarPercentage = Math.min(serversPercentage, 100);
+
         document.getElementById('current-servers').textContent = servers.current.toLocaleString('pt-BR');
-        document.getElementById('servers-progress-bar').style.width = `${serversPercentage}%`;
+        document.getElementById('servers-progress-bar').style.width = `${serversBarPercentage}%`;
         document.getElementById('servers-percentage').textContent = `${serversPercentage.toFixed(1)}%`;
 
         // Meta de Seguidores
-        const followersPercentage = (followers.current / followers.target) * 100;
+        let followersPercentage = (followers.current / followers.target) * 100;
+        // Limita a porcentagem a 100% para a barra visual
+        const followersBarPercentage = Math.min(followersPercentage, 100);
+
         document.getElementById('current-followers').textContent = followers.current.toLocaleString('pt-BR');
-        document.getElementById('followers-progress-bar').style.width = `${followersPercentage}%`;
+        document.getElementById('followers-progress-bar').style.width = `${followersBarPercentage}%`;
         document.getElementById('followers-percentage').textContent = `${followersPercentage.toFixed(1)}%`;
+
+        // Se a meta de seguidores foi batida, deixa a barra verde mais forte
+        if (followersBarPercentage >= 100) {
+            document.getElementById('followers-progress-bar').style.backgroundColor = '#1E9E38'; // Tom de verde mais forte
+        }
     }
     
-    // Função para renderizar os rankings
+    // --- O restante do JavaScript permanece igual ---
+
     function renderRankings() {
         secretariatsData.sort((a, b) => b.cadastros - a.cadastros || b.cliques - a.cliques || b.membros - a.membros);
         const podiumContainer = document.getElementById('podium-container');
