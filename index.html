@@ -248,36 +248,37 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
+            // --- DADOS SIMULADOS E AJUSTADOS CONFORME SOLICITADO ---
+            // Os dados de 'cadastros' foram manipulados para garantir o pódio correto.
             const secretariatsData = [
-                { name: 'Sec. de Governo e Agricultura', cadastros: 155, cliques: 320, membros: 140, instagram: 50 },
-                { name: 'Sec. de Educação e Esportes', cadastros: 210, cliques: 450, membros: 200, instagram: 95 },
-                { name: 'Sec. de Saúde', cadastros: 190, cliques: 400, membros: 185, instagram: 80 },
-                { name: 'Sec. de Desenvolvimento Social e Direitos Humanos', cadastros: 175, cliques: 380, membros: 160, instagram: 75 },
-                { name: 'Sec. de Infraestrutura e Mobilidade', cadastros: 215, cliques: 480, membros: 195, instagram: 110 },
-                { name: 'Sec. de Desenvolvimento Urbano, Habitação e Sustentabilidade', cadastros: 160, cliques: 350, membros: 150, instagram: 65 },
-                { name: 'Sec. de Desenvolvimento Econômico e Turismo', cadastros: 140, cliques: 300, membros: 130, instagram: 60 },
-                { name: 'Sec. da Fazenda e Planejamento', cadastros: 80, cliques: 150, membros: 75, instagram: 25 },
-                { name: 'Sec. de Cultura', cadastros: 135, cliques: 290, membros: 125, instagram: 58 },
-                { name: 'Sec. de Segurança Pública', cadastros: 95, cliques: 180, membros: 90, instagram: 30 },
-                { name: 'Procuradoria-Geral do Município', cadastros: 50, cliques: 90, membros: 45, instagram: 15 },
-                { name: 'Controladoria-Geral do Município', cadastros: 45, cliques: 85, membros: 40, instagram: 12 },
-                { name: 'Secretaria Executiva de Comunicação', cadastros: 220, cliques: 550, membros: 210, instagram: 150 },
-                { name: 'AMMA (Agência Municipal do Meio Ambiente)', cadastros: 110, cliques: 220, membros: 100, instagram: 45 },
-                { name: 'Guarda Civil Municipal', cadastros: 125, cliques: 250, membros: 115, instagram: 40 },
-                { name: 'Secretaria da Mulher', cadastros: 148, cliques: 310, membros: 135, instagram: 62 },
-                { name: 'Secretaria de Inovação', cadastros: 162, cliques: 360, membros: 155, instagram: 70 },
-                { name: 'Secretaria de Acessibilidade', cadastros: 133, cliques: 280, membros: 120, instagram: 55 },
-                { name: 'Secretaria Executiva de Finanças', cadastros: 70, cliques: 140, membros: 65, instagram: 22 },
-                { name: 'Secretaria de Administração', cadastros: 105, cliques: 200, membros: 98, instagram: 35 }
+                // Pódio Garantido
+                { name: 'Saúde', cadastros: 250, cliques: 580, membros: 240 },
+                { name: 'Educação, Cultura e Esporte', cadastros: 235, cliques: 510, membros: 220 },
+                { name: 'Desenvolvimento Econômico, Turismo e Inovação', cadastros: 218, cliques: 490, membros: 205 },
+
+                // Outras Secretarias
+                { name: 'Infraestrutura e Mobilidade', cadastros: 190, cliques: 410, membros: 185 },
+                { name: 'Assistência Social e Combate à Fome', cadastros: 182, cliques: 390, membros: 170 },
+                { name: 'Comunicação', cadastros: 170, cliques: 450, membros: 165 },
+                { name: 'Desenvolvimento Rural', cadastros: 155, cliques: 320, membros: 150 },
+                { name: 'Serviços Públicos e Defesa Civil', cadastros: 140, cliques: 300, membros: 135 },
+                { name: 'Governo', cadastros: 125, cliques: 280, membros: 120 },
+                { name: 'Desenvolvimento Urbano, Habitação e Sustentabilidade', cadastros: 115, cliques: 250, membros: 110 },
+                { name: 'Casa Civil', cadastros: 108, cliques: 240, membros: 100 },
+                { name: 'Planejamento, Gestão e Finanças', cadastros: 95, cliques: 210, membros: 90 },
+                { name: 'Segurança Pública', cadastros: 88, cliques: 190, membros: 85 },
+                { name: 'Licitações e Contratos', cadastros: 70, cliques: 150, membros: 65 },
+                { name: 'Receitas Municipais', cadastros: 65, cliques: 140, membros: 60 },
+                { name: 'Procuradoria-Geral do Município', cadastros: 50, cliques: 110, membros: 48 },
+                { name: 'Controladoria-Geral do Município', cadastros: 45, cliques: 100, membros: 42 }
             ];
 
-            // Classifica os dados
-            secretariatsData.sort((a, b) => b.cadastros - a.cadastros || b.cliques - a.cliques || b.membros - a.membros || b.instagram - a.instagram);
+            // Classifica os dados (Critérios: Cadastros > Cliques > Membros)
+            secretariatsData.sort((a, b) => b.cadastros - a.cadastros || b.cliques - a.cliques || b.membros - a.membros);
 
             const podiumContainer = document.getElementById('podium-container');
             const generalRankingBody = document.getElementById('general-ranking-body');
             
-            // Popula o Pódio e o Ranking Geral
             function renderRankings() {
                 const podium = {
                     rank1: secretariatsData[0],
@@ -285,7 +286,7 @@
                     rank3: secretariatsData[2]
                 };
 
-                // Cria o pódio na ordem visual (2, 1, 3)
+                // Cria o pódio na ordem visual (2º, 1º, 3º)
                 podiumContainer.innerHTML = `
                     ${createPodiumCard(podium.rank2, 2)}
                     ${createPodiumCard(podium.rank1, 1)}
@@ -308,7 +309,6 @@
                 }).join('');
             }
 
-            // Função para criar o HTML de cada card do pódio
             function createPodiumCard(data, rank) {
                 const rankStatus = {
                     1: 'LÍDER ABSOLUTO',
@@ -329,14 +329,12 @@
                             <p><span>Cadastros:</span> <strong>${data.cadastros}</strong></p>
                             <p><span>Cliques no Link:</span> <strong>${data.cliques}</strong></p>
                             <p><span>Membros no Grupo:</span> <strong>${data.membros}</strong></p>
-                            <p><span>Novos Seguidores:</span> <strong>${data.instagram}</strong></p>
                         </div>
                         <a href="#" class="card-button">Ver Detalhes</a>
                     </div>
                 `;
             }
 
-            // Inicia o processo
             renderRankings();
         });
     </script>
