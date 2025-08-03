@@ -79,7 +79,7 @@ header h1 {
 #ranking-table th { color: var(--primary-color); }
 .rank-position { font-weight: bold; text-align: center; }
 
-/* ESTILOS DO RODAPÉ ATUALIZADOS */
+/* Rodapé */
 footer {
     text-align: center;
     padding: 3rem 1rem;
@@ -97,9 +97,9 @@ footer {
 }
 
 .footer-logo img {
-    height: 40px; /* Ajuste a altura do seu logo conforme necessário */
+    height: 40px; 
     width: 40px;
-    background-color: #ccc; /* Cor de fundo caso o logo não carregue */
+    background-color: #ccc; 
     border-radius: 5px;
 }
 
