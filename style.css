@@ -52,21 +52,18 @@ header h1 {
 /* Seção do Pódio */
 .podium-section { padding: 2rem 0; text-align: center; }
 .podium-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
-.podium-grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: flex-start; gap: 1.5rem; }
+.podium-grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 1.5rem; }
 .podium-card { background-color: var(--secondary-color); padding: 2rem; border-radius: 12px; text-align: left; border: 1px solid #444; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; }
 .podium-card.rank-1 { transform: scale(1.05); border: 2px solid var(--gold); box-shadow: 0 0 25px rgba(255, 215, 0, 0.3); }
 .podium-card.rank-2 { border-top: 5px solid var(--silver); }
 .podium-card.rank-3 { border-top: 5px solid var(--bronze); }
-
-/* Layout do Cabeçalho do Pódio */
 .card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
 .rank-position-large { font-size: 3.5rem; font-weight: 700; color: var(--primary-color); line-height: 1; }
 .card-header .name { font-size: 1.3rem; font-weight: 600; }
-
 .card-divider { border: 0; height: 1px; background-color: #444; margin: 0.5rem 0 1.5rem 0; }
 .card-status { color: var(--primary-color); font-weight: bold; text-align: center; margin-bottom: 1.5rem; font-size: 0.9rem; }
-.card-metrics { margin-bottom: 2rem; flex-grow: 1; }
-.metric-bar-container { margin-bottom: 1.5rem; } /* Aumentei o espaço entre as métricas */
+.card-metrics { margin-bottom: 1rem; flex-grow: 1; }
+.metric-bar-container { margin-bottom: 1.5rem; }
 .metric-label { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; }
 .metric-label span { color: #ccc; }
 .metric-label strong { color: var(--light-color); font-weight: 600; }
@@ -82,12 +79,54 @@ header h1 {
 #ranking-table th { color: var(--primary-color); }
 .rank-position { font-weight: bold; text-align: center; }
 
-/* Rodapé */
-footer { text-align: center; padding: 2.5rem 0; margin-top: 2rem; background-color: var(--secondary-color); border-top: 1px solid #444; }
-.footer-highlight { color: var(--primary-color); font-style: italic; font-size: 0.9rem; margin: 0 0 1rem 0; }
-.footer-credits { color: #ccc; font-size: 1rem; margin: 0 0 1.5rem 0; }
-.footer-credits span { display: block; font-size: 0.9rem; color: #aaa; margin-bottom: 0.25rem; }
-.footer-copyright { color: #777; font-size: 0.9rem; margin: 0; }
+/* ESTILOS DO RODAPÉ ATUALIZADOS */
+footer {
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 3rem;
+    background-color: var(--secondary-color);
+    border-top: 1px solid #444;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.footer-logo img {
+    height: 40px; /* Ajuste a altura do seu logo conforme necessário */
+    width: 40px;
+    background-color: #ccc; /* Cor de fundo caso o logo não carregue */
+    border-radius: 5px;
+}
+
+.footer-logo span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--light-color);
+}
+
+.footer-credits p {
+    margin: 0.5rem 0;
+    color: #a0a0b0;
+    font-size: 0.9rem;
+}
+
+.footer-credits .names {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--light-color);
+    margin-bottom: 2rem;
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 2rem;
+}
 
 @media (max-width: 992px) {
     .podium-grid { grid-template-columns: 1fr; }
