@@ -1,36 +1,38 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // --- DADOS DAS SECRETARIAS ---
+    // DADOS DAS SECRETARIAS COM CADASTROS SOMANDO 500
     const secretariatsData = [
-        { name: 'Saúde', cadastros: 250, cliques: 580, membros: 240 },
-        { name: 'Educação, Cultura e Esporte', cadastros: 235, cliques: 510, membros: 220 },
-        { name: 'Desenvolvimento Econômico, Turismo e Inovação', cadastros: 218, cliques: 490, membros: 205 },
-        { name: 'Infraestrutura e Mobilidade', cadastros: 190, cliques: 410, membros: 185 },
-        { name: 'Assistência Social e Combate à Fome', cadastros: 182, cliques: 390, membros: 170 },
-        { name: 'Comunicação', cadastros: 170, cliques: 450, membros: 165 },
-        { name: 'Desenvolvimento Rural', cadastros: 155, cliques: 320, membros: 150 },
-        { name: 'Serviços Públicos e Defesa Civil', cadastros: 140, cliques: 300, membros: 135 },
-        { name: 'Governo', cadastros: 125, cliques: 280, membros: 120 },
-        { name: 'Desenvolvimento Urbano, Habitação e Sustentabilidade', cadastros: 115, cliques: 250, membros: 110 },
-        { name: 'Casa Civil', cadastros: 108, cliques: 240, membros: 100 },
-        { name: 'Planejamento, Gestão e Finanças', cadastros: 95, cliques: 210, membros: 90 },
-        { name: 'Segurança Pública', cadastros: 88, cliques: 190, membros: 85 },
-        { name: 'Licitações e Contratos', cadastros: 70, cliques: 150, membros: 65 },
-        { name: 'Receitas Municipais', cadastros: 65, cliques: 140, membros: 60 },
-        { name: 'Procuradoria-Geral do Município', cadastros: 50, cliques: 110, membros: 48 },
-        { name: 'Controladoria-Geral do Município', cadastros: 45, cliques: 100, membros: 42 }
+        { name: 'Saúde', cadastros: 51, cliques: 580, membros: 240 },
+        { name: 'Educação, Cultura e Esporte', cadastros: 48, cliques: 510, membros: 220 },
+        { name: 'Desenvolvimento Econômico, Turismo e Inovação', cadastros: 45, cliques: 490, membros: 205 },
+        { name: 'Infraestrutura e Mobilidade', cadastros: 39, cliques: 410, membros: 185 },
+        { name: 'Assistência Social e Combate à Fome', cadastros: 37, cliques: 390, membros: 170 },
+        { name: 'Comunicação', cadastros: 35, cliques: 450, membros: 165 },
+        { name: 'Desenvolvimento Rural', cadastros: 32, cliques: 320, membros: 150 },
+        { name: 'Serviços Públicos e Defesa Civil', cadastros: 29, cliques: 300, membros: 135 },
+        { name: 'Governo', cadastros: 26, cliques: 280, membros: 120 },
+        { name: 'Desenvolvimento Urbano, Habitação e Sustentabilidade', cadastros: 24, cliques: 250, membros: 110 },
+        { name: 'Casa Civil', cadastros: 22, cliques: 240, membros: 100 },
+        { name: 'Planejamento, Gestão e Finanças', cadastros: 19, cliques: 210, membros: 90 },
+        { name: 'Segurança Pública', cadastros: 18, cliques: 190, membros: 85 },
+        { name: 'Ammpla', cadastros: 16, cliques: 170, membros: 75 },
+        { name: 'Licitações e Contratos', cadastros: 14, cliques: 150, membros: 65 },
+        { name: 'Receitas Municipais', cadastros: 13, cliques: 140, membros: 60 },
+        { name: 'Autarquia 1', cadastros: 12, cliques: 130, membros: 55 },
+        { name: 'Autarquia 2', cadastros: 11, cliques: 120, membros: 50 },
+        { name: 'Procuradoria-Geral do Município', cadastros: 10, cliques: 110, membros: 48 },
+        { name: 'Controladoria-Geral do Município', cadastros: 9, cliques: 100, membros: 42 }
     ];
 
-    // --- DADOS DAS METAS ---
+    // DADOS DAS METAS COM SEGUIDORES CORRIGIDOS
     const goalsData = {
         servers: {
             current: secretariatsData.reduce((sum, s) => sum + s.cadastros, 0),
             target: 1000
         },
         followers: {
-            // VALOR ATUALIZADO
-            current: 191925, 
-            target: 150000 // A meta continua 150.000, o que significa que foi ultrapassada
+            current: 101925, 
+            target: 150000
         }
     };
 
@@ -38,36 +40,30 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderGoals() {
         const { servers, followers } = goalsData;
 
-        // Meta de Servidores
         let serversPercentage = (servers.current / servers.target) * 100;
-        // Limita a porcentagem a 100% no máximo para a barra não ultrapassar o limite
         const serversBarPercentage = Math.min(serversPercentage, 100);
-
         document.getElementById('current-servers').textContent = servers.current.toLocaleString('pt-BR');
         document.getElementById('servers-progress-bar').style.width = `${serversBarPercentage}%`;
         document.getElementById('servers-percentage').textContent = `${serversPercentage.toFixed(1)}%`;
 
-        // Meta de Seguidores
         let followersPercentage = (followers.current / followers.target) * 100;
-        // Limita a porcentagem a 100% para a barra visual
         const followersBarPercentage = Math.min(followersPercentage, 100);
-
         document.getElementById('current-followers').textContent = followers.current.toLocaleString('pt-BR');
         document.getElementById('followers-progress-bar').style.width = `${followersBarPercentage}%`;
         document.getElementById('followers-percentage').textContent = `${followersPercentage.toFixed(1)}%`;
 
-        // Se a meta de seguidores foi batida, deixa a barra verde mais forte
         if (followersBarPercentage >= 100) {
-            document.getElementById('followers-progress-bar').style.backgroundColor = '#1E9E38'; // Tom de verde mais forte
+            document.getElementById('followers-progress-bar').style.backgroundColor = '#1E9E38';
         }
     }
     
-    // --- O restante do JavaScript permanece igual ---
-
+    // Função para renderizar os rankings
     function renderRankings() {
         secretariatsData.sort((a, b) => b.cadastros - a.cadastros || b.cliques - a.cliques || b.membros - a.membros);
+        
         const podiumContainer = document.getElementById('podium-container');
         const generalRankingBody = document.getElementById('general-ranking-body');
+        
         const podiumData = secretariatsData.slice(0, 3);
         const generalRankingData = secretariatsData.slice(3);
 
@@ -89,9 +85,10 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 100);
     }
 
+    // FUNÇÃO DO CARD DO PÓDIO ATUALIZADA
     function createPodiumCard(data, rank) {
         const rankStatus = { 1: 'LÍDER ABSOLUTO', 2: 'EXCELENTE DESEMPENHO', 3: 'DESTAQUE NO PÓDIO' };
-        const maxValues = { cadastros: 260, cliques: 600, membros: 250 };
+        const maxValues = { cadastros: 60, cliques: 600, membros: 250 };
         const cadastrosPercent = Math.min((data.cadastros / maxValues.cadastros) * 100, 100);
         const cliquesPercent = Math.min((data.cliques / maxValues.cliques) * 100, 100);
         const membrosPercent = Math.min((data.membros / maxValues.membros) * 100, 100);
@@ -99,8 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
         return `
             <div class="podium-card rank-${rank}">
                 <div class="card-header">
+                    <div class="rank-position-large">${rank}º</div>
                     <span class="name">${data.name}</span>
-                    <span class="rank-badge">${rank}º</span>
                 </div>
                 <hr class="card-divider">
                 <p class="card-status">${rankStatus[rank]}</p>
@@ -111,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <div class="metric-bar-container">
                         <div class="metric-label"><span>Cliques no Link</span><strong>${data.cliques}</strong></div>
-                        <div class="bar-background"><div class="bar-foreground" data-width="${cliquesPercent}%"></div></div>
+                        <div class.bar-background"><div class="bar-foreground" data-width="${cliquesPercent}%"></div></div>
                     </div>
                     <div class="metric-bar-container">
                         <div class="metric-label"><span>Membros no Grupo</span><strong>${data.membros}</strong></div>
