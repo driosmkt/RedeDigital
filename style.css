@@ -58,38 +58,20 @@ header h1 {
 .podium-card.rank-2 { border-top: 5px solid var(--silver); }
 .podium-card.rank-3 { border-top: 5px solid var(--bronze); }
 
-/* --- NOVO LAYOUT DO CABEÇALHO DO PÓDIO --- */
-.card-header {
-    display: flex;
-    align-items: center; /* Alinha o número grande com o texto ao lado */
-    gap: 1rem; /* Espaço entre o número e o nome */
-    margin-bottom: 1rem;
-}
-
-.rank-position-large {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    line-height: 1; /* Para não ocupar muito espaço vertical */
-}
-
-.card-header .name {
-    font-size: 1.3rem; /* Levemente ajustado para o novo layout */
-    font-weight: 600;
-}
-/* --- FIM DAS ALTERAÇÕES NO CABEÇALHO --- */
+/* Layout do Cabeçalho do Pódio */
+.card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.rank-position-large { font-size: 3.5rem; font-weight: 700; color: var(--primary-color); line-height: 1; }
+.card-header .name { font-size: 1.3rem; font-weight: 600; }
 
 .card-divider { border: 0; height: 1px; background-color: #444; margin: 0.5rem 0 1.5rem 0; }
 .card-status { color: var(--primary-color); font-weight: bold; text-align: center; margin-bottom: 1.5rem; font-size: 0.9rem; }
 .card-metrics { margin-bottom: 2rem; flex-grow: 1; }
-.metric-bar-container { margin-bottom: 1.2rem; }
+.metric-bar-container { margin-bottom: 1.5rem; } /* Aumentei o espaço entre as métricas */
 .metric-label { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; }
 .metric-label span { color: #ccc; }
 .metric-label strong { color: var(--light-color); font-weight: 600; }
 .bar-background { height: 12px; background-color: #444; border-radius: 6px; overflow: hidden; }
 .bar-foreground { height: 100%; width: 0; background-color: var(--primary-color); border-radius: 6px; transition: width 0.8s ease-out; }
-.card-button { display: block; background-color: var(--primary-color); color: var(--dark-color); padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 8px; font-weight: bold; text-align: center; transition: background-color 0.3s ease; margin-top: auto; }
-.card-button:hover { background-color: #ffda4a; }
 
 /* Tabela do Ranking Geral */
 .general-ranking-section { text-align: center; }
