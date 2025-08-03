@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Redirecionando...</title>
 
-    <!-- Google tag (gtag.js) - ESSA É A PARTE MAIS IMPORTANTE -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CHWE9QKPGJ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -14,17 +14,25 @@
     </script>
     <!-- FIM DO GOOGLE TAG -->
 
-    <!-- SCRIPT DE REDIRECIONAMENTO -->
+    <!-- SCRIPT DE REDIRECIONAMENTO INTELIGENTE -->
     <script>
-        // Coloque o link do seu post do Instagram aqui
-        var destino = "https://www.instagram.com/p/DM3fwg_SRXc/"; 
+        // Pega a URL completa da barra de endereços do navegador
+        const url = new URL(window.location.href);
 
-        // Redireciona o usuário imediatamente para o destino
-        window.location.replace(destino);
+        // Procura por um parâmetro chamado "destino" na URL
+        const destino = url.searchParams.get('destino');
+
+        // Se o parâmetro "destino" existir, redireciona para ele
+        if (destino) {
+            window.location.replace(destino);
+        } else {
+            // Se não encontrar o parâmetro, mostra uma mensagem de erro.
+            document.write("Erro: Link de destino não especificado.");
+        }
     </script>
-    <!-- FIM DO SCRIPT DE REDIRECIONAMENTO -->
+    <!-- FIM DO SCRIPT -->
 </head>
 <body>
-    <p>Aguarde, você está sendo redirecionado para o conteúdo...</p>
+    <p>Aguarde, você está sendo redirecionado...</p>
 </body>
 </html>
