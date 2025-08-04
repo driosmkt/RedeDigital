@@ -18,6 +18,21 @@ body {
     line-height: 1.6;
 }
 
+/* --- NOVO TÍTULO PRINCIPAL --- */
+.main-title-container {
+    text-align: center;
+    padding: 2.5rem 1rem 0 1rem;
+}
+
+.main-title-container h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+/* --- FIM DO NOVO ESTILO --- */
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -26,14 +41,14 @@ body {
 
 header {
     text-align: center;
-    padding: 3rem 2rem;
+    padding: 1.5rem 2rem; /* Padding superior ajustado */
 }
 
-header h1 {
-    font-size: 2.8rem;
-    color: var(--primary-color);
+header h2 { /* Alterado de h1 para h2 */
+    font-size: 2.5rem;
+    color: var(--light-color);
     margin: 0;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
 }
 
@@ -79,7 +94,7 @@ header h1 {
 #ranking-table th { color: var(--primary-color); }
 .rank-position { font-weight: bold; text-align: center; }
 
-/* ESTILOS DO RODAPÉ ATUALIZADOS */
+/* Rodapé */
 footer {
     text-align: center;
     padding: 3rem 1rem;
@@ -97,9 +112,9 @@ footer {
 }
 
 .footer-logo img {
-    height: 40px; /* Ajuste a altura do seu logo conforme necessário */
+    height: 40px; 
     width: 40px;
-    background-color: #ccc; /* Cor de fundo caso o logo não carregue */
+    background-color: #ccc; 
     border-radius: 5px;
 }
 
@@ -132,4 +147,6 @@ footer {
     .podium-grid { grid-template-columns: 1fr; }
     .podium-card.rank-1 { order: -2; transform: scale(1); }
     .podium-card.rank-2 { order: -1; }
+    .main-title-container h1 { font-size: 2.2rem; }
+    header h2 { font-size: 1.8rem; }
 }
