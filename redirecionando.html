@@ -16,17 +16,11 @@
 
     <!-- SCRIPT DE REDIRECIONAMENTO INTELIGENTE -->
     <script>
-        // Pega a URL completa da barra de endereços do navegador
         const url = new URL(window.location.href);
-
-        // Procura por um parâmetro chamado "destino" na URL
         const destino = url.searchParams.get('destino');
-
-        // Se o parâmetro "destino" existir, redireciona para ele
         if (destino) {
             window.location.replace(destino);
         } else {
-            // Se não encontrar o parâmetro, mostra uma mensagem de erro.
             document.write("Erro: Link de destino não especificado.");
         }
     </script>
