@@ -1,13 +1,14 @@
 :root {
-    --primary-color: #FFC107; /* Amarelo */
-    --secondary-color: #2a2a38; /* Roxo escuro/cinza do card */
-    --dark-color: #1c1c24; /* Fundo mais escuro */
-    --light-color: #F8F9FA; /* Branco/Cinza Claro */
+    /* --- NOVA PALETA DE CORES BASEADA NO LOGO --- */
+    --primary-color: #FDB813; /* Amarelo/Dourado do logo */
+    --accent-color: #004AAD; /* Azul forte do logo */
+    --secondary-color: #2a2a38;
+    --dark-color: #1c1c24;
+    --light-color: #F8F9FA;
     --font-family: 'Poppins', sans-serif;
     --gold: #FFD700;
     --silver: #C0C0C0;
     --bronze: #CD7F32;
-    --success-color: #28a745;
 }
 
 body {
@@ -18,10 +19,18 @@ body {
     line-height: 1.6;
 }
 
-/* --- NOVO TÍTULO PRINCIPAL --- */
+/* Título Principal com Logo */
 .main-title-container {
     text-align: center;
     padding: 2.5rem 1rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-logo {
+    height: 60px; /* Ajuste o tamanho se necessário */
+    margin-bottom: 1rem;
 }
 
 .main-title-container h1 {
@@ -31,7 +40,6 @@ body {
     font-weight: 700;
     text-transform: uppercase;
 }
-/* --- FIM DO NOVO ESTILO --- */
 
 .container {
     max-width: 1200px;
@@ -41,10 +49,10 @@ body {
 
 header {
     text-align: center;
-    padding: 1.5rem 2rem; /* Padding superior ajustado */
+    padding: 1.5rem 2rem;
 }
 
-header h2 { /* Alterado de h1 para h2 */
+header h2 {
     font-size: 2.5rem;
     color: var(--light-color);
     margin: 0;
@@ -57,10 +65,24 @@ header h2 { /* Alterado de h1 para h2 */
 .goals-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
 .goals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
 .goal-card { background-color: var(--secondary-color); padding: 2rem; border-radius: 12px; border: 1px solid #444; text-align: center; }
-.goal-icon { width: 36px; height: 36px; filter: invert(80%) sepia(50%) saturate(1500%) hue-rotate(5deg) brightness(1.1); margin-bottom: 1rem; }
+
+.goal-icon { 
+    width: 36px; 
+    height: 36px; 
+    /* Filtro para colorir o ícone com o azul da marca */
+    filter: invert(25%) sepia(89%) saturate(4598%) hue-rotate(211deg) brightness(96%) contrast(101%);
+}
+
 .goal-card h3 { font-size: 1.2rem; color: var(--primary-color); font-weight: 600; margin: 0; margin-bottom: 1.5rem; }
 .goal-progress-container { background-color: #444; border-radius: 10px; height: 15px; overflow: hidden; margin-bottom: 1rem; }
-.goal-progress-bar { height: 100%; width: 0; background-color: var(--success-color); border-radius: 10px; transition: width 1.2s ease-out; }
+.goal-progress-bar { 
+    height: 100%; 
+    width: 0; 
+    /* Barra de progresso com o azul da marca */
+    background-color: var(--accent-color); 
+    border-radius: 10px; 
+    transition: width 1.2s ease-out; 
+}
 .goal-details { font-size: 1rem; font-weight: 500; color: #ccc; margin-bottom: 0.25rem; }
 .goal-percentage { font-size: 1.3rem; font-weight: bold; color: var(--light-color); margin-top: 0.5rem; }
 
@@ -69,7 +91,7 @@ header h2 { /* Alterado de h1 para h2 */
 .podium-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
 .podium-grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 1.5rem; }
 .podium-card { background-color: var(--secondary-color); padding: 2rem; border-radius: 12px; text-align: left; border: 1px solid #444; display: flex; flex-direction: column; height: 100%; box-sizing: border-box; }
-.podium-card.rank-1 { transform: scale(1.05); border: 2px solid var(--gold); box-shadow: 0 0 25px rgba(255, 215, 0, 0.3); }
+.podium-card.rank-1 { transform: scale(1.05); border: 2px solid var(--primary-color); box-shadow: 0 0 25px rgba(253, 184, 19, 0.3); }
 .podium-card.rank-2 { border-top: 5px solid var(--silver); }
 .podium-card.rank-3 { border-top: 5px solid var(--bronze); }
 .card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
@@ -113,9 +135,7 @@ footer {
 
 .footer-logo img {
     height: 40px; 
-    width: 40px;
-    background-color: #ccc; 
-    border-radius: 5px;
+    width: auto; /* Mantém a proporção do logo */
 }
 
 .footer-logo span {
