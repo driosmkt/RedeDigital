@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simão na Rede Digital - Ranking</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Externo -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CHWE9QKPGJ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-CHWE9QKPGJ');
+    </script>
+</head>
+<body>
+
+    <!-- TÍTULO PRINCIPAL COM LOGO -->
+    <div class="main-title-container">
+        <img src="logo.png" alt="Logo Simão na Rede Digital" class="main-logo">
+        <h1>Simão na Rede Digital</h1>
+    </div>
+
+    <!-- Título da página de ranking -->
+    <header class="container">
+        <h2>Corrida Digital</h2>
+    </header>
+
+    <main class="container">
+        <!-- Seção do Pódio para os 3 primeiros -->
+        <section class="podium-section">
+            <h2>🏆 Pódio das Secretarias 🏆</h2>
+            <div class="podium-grid" id="podium-container">
+                <!-- Cards do pódio serão inseridos aqui via JavaScript -->
+            </div>
+        </section>
+
+        <!-- Seção do Ranking Geral -->
+        <section class="general-ranking-section">
+            <h2>Ranking Geral</h2>
+            <div class="table-container">
+                <table id="ranking-table">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Pos.</th>
+                            <th>Secretaria</th>
+                            <th>Cadastros</th>
+                            <th>Cliques</th>
+                            <th>Membros</th>
+                        </tr>
+                    </thead>
+                    <tbody id="general-ranking-body">
+                        <!-- Linhas do ranking geral serão inseridas aqui via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Seção de Metas Principais -->
+        <section class="goals-section">
+            <h2>Metas do Projeto</h2>
+            <div class="goals-grid">
+                <!-- Meta de Servidores Cadastrados -->
+                <div class="goal-card">
+                    <img src="https://www.gstatic.com/images/icons/material/system_gm/2x/group_gm_blue_24dp.png" alt="Ícone de Pessoas" class="goal-icon">
+                    <h3>Servidores Cadastrados</h3>
+                    <div class="goal-progress-container">
+                        <div class="goal-progress-bar" id="servers-progress-bar"></div>
+                    </div>
+                    <div class="goal-details">
+                        <span id="current-servers">0</span> / <span>1.000</span>
+                    </div>
+                    <p class="goal-percentage" id="servers-percentage">0%</p>
+                </div>
+
+                <!-- Meta de Seguidores -->
+                <div class="goal-card">
+                    <img src="https://www.gstatic.com/images/icons/material/system/2x/camera_alt_gm_blue_24dp.png" alt="Ícone do Instagram" class="goal-icon">
+                    <h3>Seguidores no Instagram</h3>
+                    <div class="goal-progress-container">
+                        <div class="goal-progress-bar" id="followers-progress-bar"></div>
+                    </div>
+                    <div class="goal-details">
+                        <span id="current-followers">0</span> / <span>150.000</span>
+                    </div>
+                    <p class="goal-percentage" id="followers-percentage">0%</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="footer-logo">
+            <img src="logo.png" alt="Logo Simão na Rede Digital">
+            <span>Simão na Rede Digital</span>
+        </div>
+        <div class="footer-credits">
+            <p>Núcleo Digital da Secretaria de Comunicação:</p>
+            <p class="names">Raphael Rosendo e Douglas Rios</p>
+        </div>
+        <p class="footer-copyright">&copy; 2025 Prefeitura de Petrolina – Secretaria de Comunicação</p>
+    </footer>
+
+    <!-- JavaScript Externo -->
+    <script src="script.js"></script>
+</body>
+</html>
