@@ -7,11 +7,11 @@
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- CSS Externo -->
-    <link rel="stylesheet" href="style.css">
+    <!-- CSS Externo com "Cache Busting" para forçar a atualização -->
+    <link rel="stylesheet" href="style.css?v=2.0">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CHWE9QKPGJ"></script>
@@ -19,6 +19,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-CHWE9QKPGJ');
     </script>
 </head>
@@ -26,7 +27,8 @@
 
     <!-- TÍTULO PRINCIPAL COM LOGO -->
     <div class="main-title-container">
-        <img src="logo.png" alt="Logo Simão na Rede Digital" class="main-logo">
+        <!-- Caminho do logo corrigido para corresponder ao seu arquivo -->
+        <img src="Logo-1.png" alt="Logo Simão na Rede Digital" class="main-logo">
         <h1>Simão na Rede Digital</h1>
     </div>
 
@@ -101,7 +103,8 @@
     <!-- Rodapé -->
     <footer>
         <div class="footer-logo">
-            <img src="logo.png" alt="Logo Simão na Rede Digital">
+            <!-- Caminho do logo corrigido para corresponder ao seu arquivo -->
+            <img src="Logo-1.png" alt="Logo Simão na Rede Digital">
             <span>Simão na Rede Digital</span>
         </div>
         <div class="footer-credits">
