@@ -8,7 +8,6 @@
     --gold: #FFD700;
     --silver: #C0C0C0;
     --bronze: #CD7F32;
-    /* --- NOVAS CORES PARA GRADIENTE --- */
     --cyan-tech: #22d3ee;
     --green-tech: #00ff87;
     --danger-color: #ef4444;
@@ -23,7 +22,6 @@ body {
     overflow-x: hidden;
 }
 
-/* --- EFEITO DE BRILHO DO MOUSE --- */
 #cursor-glow {
     position: fixed; top: 0; left: 0; width: 800px; height: 800px;
     background: radial-gradient(circle at center, rgba(253, 184, 19, 0.08), transparent 50%);
@@ -31,7 +29,6 @@ body {
     transition: width 0.3s, height 0.3s;
 }
 
-/* --- TÍTULO PRINCIPAL COM LOGO --- */
 .main-title-container {
     text-align: center; padding: 2.5rem 1rem 1rem 1rem; display: flex;
     flex-direction: column; align-items: center; position: relative; z-index: 1;
@@ -53,7 +50,6 @@ body {
 header { text-align: center; padding: 1.5rem 2rem; }
 header h2 { font-size: 2.5rem; color: var(--light-color); margin: 0; font-weight: 600; text-transform: uppercase; }
 
-/* Seção de Metas */
 .goals-section { text-align: center; padding: 2rem 0; margin-top: 4rem; }
 .goals-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
 .goals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
@@ -61,26 +57,24 @@ header h2 { font-size: 2.5rem; color: var(--light-color); margin: 0; font-weight
 .goal-icon { width: 36px; height: 36px; filter: invert(25%) sepia(89%) saturate(4598%) hue-rotate(211deg) brightness(96%) contrast(101%); }
 .goal-card h3 { font-size: 1.2rem; color: var(--primary-color); font-weight: 600; margin: 0; margin-bottom: 1.5rem; }
 .goal-progress-container { background-color: #444; border-radius: 10px; height: 15px; overflow: hidden; margin-bottom: 1rem; }
-/* --- BARRA DE PROGRESSO COM GRADIENTE TECH --- */
 .goal-progress-bar { 
     height: 100%; width: 0; 
     background-image: linear-gradient(90deg, var(--cyan-tech), var(--green-tech));
-    border-radius: 10px; transition: width 1.2s ease-out; 
+    border-radius: 10px; transition: width 1.8s ease-out; /* Animação mais lenta */
 }
 .goal-details { font-size: 1rem; font-weight: 500; color: #ccc; margin-bottom: 0.25rem; }
 .goal-percentage { font-size: 1.3rem; font-weight: bold; color: var(--light-color); margin-top: 0.5rem; }
 
-/* Seção do Pódio */
 .podium-section { padding: 2rem 0; text-align: center; }
 .podium-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
 .podium-grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 1.5rem; }
-/* --- NOVO EFEITO SCANLINE NOS CARDS --- */
+
 @keyframes scanline-anim-card { from { top: 0%; } to { top: 100%; } }
 .podium-card {
     background-color: var(--secondary-color); padding: 2rem; border-radius: 12px; text-align: left;
     border: 1px solid #444; display: flex; flex-direction: column; height: 100%;
     box-sizing: border-box; transition: transform 0.2s ease-out, box-shadow 0.3s ease;
-    position: relative; overflow: hidden; /* Necessário para o scanline */
+    position: relative; overflow: hidden;
 }
 .podium-card .scanline {
     content: ''; position: absolute; top: -10%; left: 0; width: 100%; height: 2px;
@@ -88,18 +82,16 @@ header h2 { font-size: 2.5rem; color: var(--light-color); margin: 0; font-weight
     box-shadow: 0 0 8px rgba(253, 184, 19, 0.7);
     animation: scanline-anim-card 3s linear infinite alternate; z-index: 2; pointer-events: none;
 }
-/* --- FIM DO EFEITO SCANLINE --- */
+
 .podium-card::before, .goal-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 12px; border: 2px solid transparent; background: conic-gradient(from 180deg at 50% 50%, var(--primary-color), var(--accent-color), var(--primary-color)) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); -webkit-mask-composite: destination-out; mask-composite: exclude; opacity: 0; transition: opacity 0.3s ease-in-out; }
 .podium-card:hover::before, .goal-card:hover::before { opacity: 1; }
 .podium-card.rank-1 { border: 2px solid var(--primary-color); box-shadow: 0 0 25px rgba(253, 184, 19, 0.3); }
 .podium-card.rank-2 { border-top: 5px solid var(--silver); }
 .podium-card.rank-3 { border-top: 5px solid var(--bronze); }
 
-/* --- NOVO LAYOUT DO CABEÇALHO DO PÓDIO --- */
 .card-header { text-align: center; margin-bottom: 1.5rem; }
 .rank-medal { font-size: 3.5rem; line-height: 1; margin-bottom: 0.5rem; }
 .card-header .name { font-size: 1.5rem; font-weight: 700; color: var(--light-color); }
-/* --- FIM DO NOVO LAYOUT --- */
 
 .card-divider { border: 0; height: 1px; background-color: #444; margin: 0.5rem 0 1.5rem 0; }
 .card-status { color: var(--primary-color); font-weight: bold; text-align: center; margin-bottom: 1.5rem; font-size: 0.9rem; }
@@ -109,14 +101,12 @@ header h2 { font-size: 2.5rem; color: var(--light-color); margin: 0; font-weight
 .metric-label span { color: #ccc; }
 .metric-label strong { color: var(--light-color); font-weight: 600; }
 .bar-background { height: 12px; background-color: #444; border-radius: 6px; overflow: hidden; }
-/* --- BARRA DE PROGRESSO COM GRADIENTE TECH --- */
 .bar-foreground {
     height: 100%; width: 0;
     background-image: linear-gradient(90deg, var(--cyan-tech), var(--green-tech));
-    border-radius: 6px; transition: width 0.8s ease-out;
+    border-radius: 6px; transition: width 1.8s ease-out; /* Animação mais lenta */
 }
 
-/* Tabela do Ranking Geral */
 .general-ranking-section { text-align: center; }
 .general-ranking-section h2 { font-size: 2rem; margin-top: 4rem; margin-bottom: 2rem; }
 .table-container { background-color: var(--secondary-color); padding: 1rem; border-radius: 8px; overflow-x: auto; }
@@ -125,19 +115,15 @@ header h2 { font-size: 2.5rem; color: var(--light-color); margin: 0; font-weight
 #ranking-table th { color: var(--primary-color); }
 .rank-position { font-weight: bold; text-align: center; }
 
-/* --- DESTAQUE PARA OS ÚLTIMOS COLOCADOS (NOVO) --- */
 tr.last-place {
-    background-color: rgba(239, 68, 68, 0.1); /* Fundo vermelho suave */
-    color: #fca5a5; /* Texto mais claro para combinar */
+    background-image: linear-gradient(to right, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
+    color: #fca5a5;
 }
 tr.last-place td:first-child::before {
     content: '⚠️ ';
     color: var(--danger-color);
 }
-/* --- FIM DO DESTAQUE --- */
 
-
-/* Rodapé */
 footer { text-align: center; padding: 3rem 1rem; margin-top: 3rem; background-color: var(--secondary-color); border-top: 1px solid #444; position: relative; }
 .footer-credits p { margin: 0.5rem 0; color: #a0a0b0; font-size: 0.9rem; }
 .footer-credits .names { font-weight: 700; font-size: 1.2rem; color: var(--light-color); margin-bottom: 2rem; }
