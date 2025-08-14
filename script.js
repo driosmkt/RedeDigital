@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // Efeito de brilho do mouse
     const glow = document.createElement('div');
     glow.id = 'cursor-glow';
     document.body.appendChild(glow);
@@ -9,30 +8,28 @@ document.addEventListener("DOMContentLoaded", () => {
         glow.style.top = `${e.clientY}px`;
     });
     
-    // --- DADOS ATUALIZADOS ---
+    // --- DADOS ATUALIZADOS E RECALCULADOS ---
     const secretariatsData = [
-        // Novos dados proporcionais para o pódio
-        { name: 'Saúde', cadastros: 85, cliques: 820, membros: 700 },
-        { name: 'Educação, Cultura e Esporte', cadastros: 60, cliques: 574, membros: 490 },
-        { name: 'Desenvolvimento Econômico, Turismo e Inovação', cadastros: 48, cliques: 459, membros: 392 },
-        // Dados ajustados para manter a soma total abaixo de 1000
-        { name: 'Infraestrutura e Mobilidade', cadastros: 45, cliques: 410, membros: 185 },
-        { name: 'Assistência Social e Combate à Fome', cadastros: 42, cliques: 390, membros: 170 },
-        { name: 'Comunicação', cadastros: 40, cliques: 450, membros: 165 },
-        { name: 'Desenvolvimento Rural', cadastros: 38, cliques: 320, membros: 150 },
-        { name: 'Serviços Públicos e Defesa Civil', cadastros: 35, cliques: 300, membros: 135 },
-        { name: 'Governo', cadastros: 33, cliques: 280, membros: 120 },
-        { name: 'Desenvolvimento Urbano, Habitação e Sustentabilidade', cadastros: 31, cliques: 250, membros: 110 },
-        { name: 'Casa Civil', cadastros: 29, cliques: 240, membros: 100 },
-        { name: 'Planejamento, Gestão e Finanças', cadastros: 27, cliques: 210, membros: 90 },
-        { name: 'Segurança Pública', cadastros: 25, cliques: 190, membros: 85 },
-        { name: 'Ammpla', cadastros: 23, cliques: 170, membros: 75 },
-        { name: 'Licitações e Contratos', cadastros: 21, cliques: 150, membros: 65 },
-        { name: 'Receitas Municipais', cadastros: 20, cliques: 140, membros: 60 },
-        { name: 'Autarquia 1', cadastros: 18, cliques: 130, membros: 55 },
-        { name: 'Autarquia 2', cadastros: 17, cliques: 120, membros: 50 },
-        { name: 'Procuradoria-Geral do Município', cadastros: 15, cliques: 110, membros: 48 },
-        { name: 'Controladoria-Geral do Município', cadastros: 13, cliques: 100, membros: 42 }
+        { name: 'Saúde', cadastros: 100, cliques: 820, membros: 700 },
+        { name: 'Educação, Cultura e Esporte', cadastros: 70, cliques: 574, membros: 490 },
+        { name: 'Desenvolvimento Econômico, Turismo e Inovação', cadastros: 56, cliques: 459, membros: 392 },
+        { name: 'Infraestrutura e Mobilidade', cadastros: 50, cliques: 410, membros: 185 },
+        { name: 'Assistência Social e Combate à Fome', cadastros: 48, cliques: 390, membros: 170 },
+        { name: 'Comunicação', cadastros: 45, cliques: 450, membros: 165 },
+        { name: 'Desenvolvimento Rural', cadastros: 42, cliques: 320, membros: 150 },
+        { name: 'Serviços Públicos e Defesa Civil', cadastros: 40, cliques: 300, membros: 135 },
+        { name: 'Governo', cadastros: 38, cliques: 280, membros: 120 },
+        { name: 'Desenvolvimento Urbano, Habitação e Sustentabilidade', cadastros: 35, cliques: 250, membros: 110 },
+        { name: 'Casa Civil', cadastros: 33, cliques: 240, membros: 100 },
+        { name: 'Planejamento, Gestão e Finanças', cadastros: 31, cliques: 210, membros: 90 },
+        { name: 'Segurança Pública', cadastros: 29, cliques: 190, membros: 85 },
+        { name: 'Ammpla', cadastros: 27, cliques: 170, membros: 75 },
+        { name: 'Licitações e Contratos', cadastros: 25, cliques: 150, membros: 65 },
+        { name: 'Receitas Municipais', cadastros: 23, cliques: 140, membros: 60 },
+        { name: 'Autarquia 1', cadastros: 21, cliques: 130, membros: 55 },
+        { name: 'Autarquia 2', cadastros: 20, cliques: 120, membros: 50 },
+        { name: 'Procuradoria-Geral do Município', cadastros: 19, cliques: 110, membros: 48 },
+        { name: 'Controladoria-Geral do Município', cadastros: 18, cliques: 100, membros: 42 }
     ];
 
     const goalsData = {
@@ -44,15 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function renderGoals() {
         const { servers, followers } = goalsData;
-        let serversPercentage = (servers.current / servers.target) * 100;
         document.getElementById('current-servers').textContent = servers.current.toLocaleString('pt-BR');
-        document.getElementById('servers-progress-bar').style.width = `${serversPercentage}%`;
-        document.getElementById('servers-percentage').textContent = `${serversPercentage.toFixed(1)}%`;
+        document.getElementById('servers-progress-bar').style.width = `${(servers.current / servers.target) * 100}%`;
+        document.getElementById('servers-percentage').textContent = `${((servers.current / servers.target) * 100).toFixed(1)}%`;
         
-        let followersPercentage = (followers.current / followers.target) * 100;
         document.getElementById('current-followers').textContent = followers.current.toLocaleString('pt-BR');
-        document.getElementById('followers-progress-bar').style.width = `${followersPercentage}%`;
-        document.getElementById('followers-percentage').textContent = `${followersPercentage.toFixed(1)}%`;
+        document.getElementById('followers-progress-bar').style.width = `${(followers.current / followers.target) * 100}%`;
+        document.getElementById('followers-percentage').textContent = `${((followers.current / followers.target) * 100).toFixed(1)}%`;
     }
     
     function renderRankings() {
@@ -91,7 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
             document.querySelectorAll('.bar-foreground, .goal-progress-bar').forEach(bar => {
-                bar.style.width = bar.dataset.width || bar.style.width;
+                const targetWidth = bar.dataset.width || bar.style.width;
+                bar.style.width = targetWidth;
             });
         }, 100);
     }
