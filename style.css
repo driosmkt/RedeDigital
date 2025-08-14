@@ -22,7 +22,6 @@ body {
     transition: width 0.3s, height 0.3s;
 }
 
-/* --- CABEÇALHO REESTRUTURADO --- */
 .page-header {
     display: flex; justify-content: center;
     padding: 2.5rem 1rem 1rem 1rem; position: relative; z-index: 1;
@@ -32,7 +31,6 @@ body {
 }
 .main-logo { height: 70px; }
 .header-divider { width: 2px; height: 50px; background-color: #444; }
-.title-text { text-align: left; }
 .title-text h2, .title-text p {
     font-size: 1.8rem; color: var(--light-color); margin: 0; font-weight: 600;
     text-transform: uppercase; line-height: 1.2;
@@ -47,7 +45,6 @@ body {
 .animate-ping { position: absolute; display: inline-flex; height: 100%; width: 100%; border-radius: 50%; opacity: 0.75; animation: ping 1.2s cubic-bezier(0, 0, 0.2, 1) infinite; }
 .ping-dot { position: relative; display: inline-flex; border-radius: 50%; height: 100%; width: 100%; }
 .status-indicator .online { color: #22c55e; margin-left: 0.4rem; }
-/* --- FIM DO CABEÇALHO --- */
 
 .container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; position: relative; z-index: 1; }
 
@@ -55,11 +52,11 @@ body {
 .podium-section { text-align: center; }
 .podium-header {
     display: flex; justify-content: center; align-items: center;
-    gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem;
+    gap: 1.5rem; flex-wrap: wrap; margin-bottom: 3.5rem; /* Aumentado o espaço */
 }
 .podium-header h2 { font-size: 2.2rem; color: var(--light-color); margin: 0; }
 .podium-grid {
-    display: grid; grid-template-columns: 1fr 1.1fr 1fr; /* 1º lugar um pouco maior */
+    display: grid; grid-template-columns: 1fr 1.1fr 1fr;
     align-items: flex-end; gap: 1.5rem;
 }
 @keyframes scanline-anim-card { from { top: 0%; } to { top: 100%; } }
@@ -67,7 +64,7 @@ body {
     background-color: var(--secondary-color); padding: 2rem; border-radius: 12px;
     border: 1px solid #444; display: flex; flex-direction: column;
     box-sizing: border-box; transition: transform 0.2s ease-out, box-shadow 0.3s ease;
-    position: relative; overflow: hidden; min-height: 480px; /* Altura mínima para consistência */
+    position: relative; overflow: hidden; min-height: 480px;
 }
 .podium-card .scanline {
     content: ''; position: absolute; top: -10%; left: 0; width: 100%; height: 2px;
@@ -77,7 +74,7 @@ body {
 }
 .podium-card.rank-2 { order: 1; }
 .podium-card.rank-1 {
-    order: 2; transform: translateY(-25px); /* Efeito de elevação */
+    order: 2; transform: translateY(-30px); /* Aumentado o efeito de elevação */
     z-index: 10; border: 2px solid var(--primary-color);
     box-shadow: 0 0 30px rgba(253, 184, 19, 0.4);
 }
@@ -104,8 +101,12 @@ body {
 /* Seção de Metas */
 .goals-section { text-align: center; padding: 2rem 0; margin-top: 4rem; }
 .goals-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
-.goals-grid.three-columns { grid-template-columns: repeat(3, 1fr); }
-.goal-card { background-color: var(--secondary-color); padding: 2rem; border-radius: 12px; border: 1px solid #444; text-align: center; transition: transform 0.2s ease-out, box-shadow 0.3s ease; position: relative; }
+/* Usando o mesmo grid do pódio para as metas */
+.goal-card {
+    background-color: var(--secondary-color); padding: 2rem; border-radius: 12px;
+    border: 1px solid #444; text-align: center; transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+    position: relative;
+}
 .goal-icon { width: 36px; height: 36px; fill: var(--accent-color); }
 .goal-card h3 { font-size: 1.2rem; color: var(--primary-color); font-weight: 600; margin: 0; margin-bottom: 1.5rem; }
 .goal-progress-container { background-color: #444; border-radius: 10px; height: 15px; overflow: hidden; margin-bottom: 1rem; }
@@ -136,17 +137,18 @@ tr.last-place td:first-child::before {
 
 /* Rodapé */
 footer { text-align: center; padding: 3rem 1rem; margin-top: 3rem; background-color: var(--secondary-color); border-top: 1px solid #444; }
-.footer-content { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; margin-bottom: 2rem; }
+.footer-content { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-bottom: 2rem; }
 .footer-credits p { margin: 0.25rem 0; color: #a0a0b0; font-size: 0.9rem; }
 .footer-credits .names { font-weight: 700; font-size: 1.2rem; color: var(--light-color); }
 .connection-status { display: flex; align-items: center; font-family: monospace; font-size: 0.75rem; color: var(--primary-color); }
-.connection-status .ping-container { width: 0.5rem; height: 0.5rem; }
+.connection-status .ping-container { width: 0.5rem; height: 0.5rem; margin-right: 0.5rem; }
 .connection-status .animate-ping { background-color: var(--primary-color); }
 .connection-status .ping-dot { background-color: var(--primary-color); }
 .footer-copyright { font-size: 0.8rem; color: #888; }
 
 @media (max-width: 992px) {
     .podium-grid { grid-template-columns: 1fr; align-items: center; }
+    .podium-card { min-height: auto; }
     .podium-card.rank-1 { order: 1; transform: scale(1.05); }
     .podium-card.rank-2 { order: 2; }
     .podium-card.rank-3 { order: 3; }
