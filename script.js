@@ -33,21 +33,27 @@ document.addEventListener("DOMContentLoaded", () => {
     ];
 
     const goalsData = {
-        // A soma agora será 850
         servers: { current: secretariatsData.reduce((sum, s) => sum + s.cadastros, 0), target: 1000 },
-        // Seguidores atualizados
-        followers: { current: 103550, target: 150000 }
+        followers: { current: 103550, target: 150000 },
+        population: { current: 0, target: 10000 }
     };
 
     function renderGoals() {
-        const { servers, followers } = goalsData;
+        // ... (código existente da função renderGoals, agora com a nova meta) ...
+        const { servers, followers, population } = goalsData;
+        
+        // Servidores
         document.getElementById('current-servers').textContent = servers.current.toLocaleString('pt-BR');
         document.getElementById('servers-progress-bar').style.width = `${(servers.current / servers.target) * 100}%`;
         document.getElementById('servers-percentage').textContent = `${((servers.current / servers.target) * 100).toFixed(1)}%`;
         
+        // Seguidores
         document.getElementById('current-followers').textContent = followers.current.toLocaleString('pt-BR');
         document.getElementById('followers-progress-bar').style.width = `${(followers.current / followers.target) * 100}%`;
         document.getElementById('followers-percentage').textContent = `${((followers.current / followers.target) * 100).toFixed(1)}%`;
+        
+        // População
+        document.getElementById('current-population').textContent = population.current.toLocaleString('pt-BR');
     }
     
     function renderRankings() {
