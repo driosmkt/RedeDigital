@@ -9,36 +9,50 @@ document.addEventListener("DOMContentLoaded", () => {
         glow.style.top = `${e.clientY}px`;
     });
     
+    // --- DADOS ATUALIZADOS ---
     const secretariatsData = [
-        { name: 'Saúde', cadastros: 51, cliques: 580, membros: 240 },
-        { name: 'Educação, Cultura e Esporte', cadastros: 48, cliques: 510, membros: 220 },
-        { name: 'Desenvolvimento Econômico, Turismo e Inovação', cadastros: 45, cliques: 490, membros: 205 },
-        { name: 'Infraestrutura e Mobilidade', cadastros: 39, cliques: 410, membros: 185 },
-        { name: 'Assistência Social e Combate à Fome', cadastros: 37, cliques: 390, membros: 170 },
-        { name: 'Comunicação', cadastros: 35, cliques: 450, membros: 165 },
-        { name: 'Desenvolvimento Rural', cadastros: 26, cliques: 320, membros: 150 },
-        { name: 'Serviços Públicos e Defesa Civil', cadastros: 25, cliques: 300, membros: 135 },
-        { name: 'Governo', cadastros: 24, cliques: 280, membros: 120 },
-        { name: 'Desenvolvimento Urbano, Habitação e Sustentabilidade', cadastros: 23, cliques: 250, membros: 110 },
-        { name: 'Casa Civil', cadastros: 22, cliques: 240, membros: 100 },
-        { name: 'Planejamento, Gestão e Finanças', cadastros: 21, cliques: 210, membros: 90 },
-        { name: 'Segurança Pública', cadastros: 20, cliques: 190, membros: 85 },
-        { name: 'Ammpla', cadastros: 19, cliques: 170, membros: 75 },
-        { name: 'Licitações e Contratos', cadastros: 18, cliques: 150, membros: 65 },
-        { name: 'Receitas Municipais', cadastros: 17, cliques: 140, membros: 60 },
-        { name: 'Autarquia 1', cadastros: 16, cliques: 130, membros: 55 },
-        { name: 'Autarquia 2', cadastros: 15, cliques: 120, membros: 50 },
-        { name: 'Procuradoria-Geral do Município', cadastros: 11, cliques: 110, membros: 48 },
-        { name: 'Controladoria-Geral do Município', cadastros: 8, cliques: 100, membros: 42 }
+        // Novos dados proporcionais para o pódio
+        { name: 'Saúde', cadastros: 85, cliques: 820, membros: 700 },
+        { name: 'Educação, Cultura e Esporte', cadastros: 60, cliques: 574, membros: 490 },
+        { name: 'Desenvolvimento Econômico, Turismo e Inovação', cadastros: 48, cliques: 459, membros: 392 },
+        // Dados ajustados para manter a soma total abaixo de 1000
+        { name: 'Infraestrutura e Mobilidade', cadastros: 45, cliques: 410, membros: 185 },
+        { name: 'Assistência Social e Combate à Fome', cadastros: 42, cliques: 390, membros: 170 },
+        { name: 'Comunicação', cadastros: 40, cliques: 450, membros: 165 },
+        { name: 'Desenvolvimento Rural', cadastros: 38, cliques: 320, membros: 150 },
+        { name: 'Serviços Públicos e Defesa Civil', cadastros: 35, cliques: 300, membros: 135 },
+        { name: 'Governo', cadastros: 33, cliques: 280, membros: 120 },
+        { name: 'Desenvolvimento Urbano, Habitação e Sustentabilidade', cadastros: 31, cliques: 250, membros: 110 },
+        { name: 'Casa Civil', cadastros: 29, cliques: 240, membros: 100 },
+        { name: 'Planejamento, Gestão e Finanças', cadastros: 27, cliques: 210, membros: 90 },
+        { name: 'Segurança Pública', cadastros: 25, cliques: 190, membros: 85 },
+        { name: 'Ammpla', cadastros: 23, cliques: 170, membros: 75 },
+        { name: 'Licitações e Contratos', cadastros: 21, cliques: 150, membros: 65 },
+        { name: 'Receitas Municipais', cadastros: 20, cliques: 140, membros: 60 },
+        { name: 'Autarquia 1', cadastros: 18, cliques: 130, membros: 55 },
+        { name: 'Autarquia 2', cadastros: 17, cliques: 120, membros: 50 },
+        { name: 'Procuradoria-Geral do Município', cadastros: 15, cliques: 110, membros: 48 },
+        { name: 'Controladoria-Geral do Município', cadastros: 13, cliques: 100, membros: 42 }
     ];
 
     const goalsData = {
+        // A soma agora será 850
         servers: { current: secretariatsData.reduce((sum, s) => sum + s.cadastros, 0), target: 1000 },
-        followers: { current: 101925, target: 150000 }
+        // Seguidores atualizados
+        followers: { current: 103550, target: 150000 }
     };
 
     function renderGoals() {
-        // ... (código existente da função renderGoals) ...
+        const { servers, followers } = goalsData;
+        let serversPercentage = (servers.current / servers.target) * 100;
+        document.getElementById('current-servers').textContent = servers.current.toLocaleString('pt-BR');
+        document.getElementById('servers-progress-bar').style.width = `${serversPercentage}%`;
+        document.getElementById('servers-percentage').textContent = `${serversPercentage.toFixed(1)}%`;
+        
+        let followersPercentage = (followers.current / followers.target) * 100;
+        document.getElementById('current-followers').textContent = followers.current.toLocaleString('pt-BR');
+        document.getElementById('followers-progress-bar').style.width = `${followersPercentage}%`;
+        document.getElementById('followers-percentage').textContent = `${followersPercentage.toFixed(1)}%`;
     }
     
     function renderRankings() {
@@ -58,11 +72,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         podiumContainer.innerHTML = podiumData.map((s, i) => createPodiumCard(s, i + 1, maxPodiumValues)).join('');
         
-        // --- LÓGICA ATUALIZADA PARA O RANKING GERAL ---
         const totalItems = secretariatsData.length;
         generalRankingBody.innerHTML = generalRankingData.map((s, i) => {
             const rank = i + 4;
-            // Verifica se a posição está entre as 3 últimas
             const isLastPlace = rank >= totalItems - 2;
             const rowClass = isLastPlace ? 'class="last-place"' : '';
 
@@ -78,13 +90,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }).join('');
 
         setTimeout(() => {
-            document.querySelectorAll('.bar-foreground').forEach(bar => {
-                bar.style.width = bar.dataset.width;
+            document.querySelectorAll('.bar-foreground, .goal-progress-bar').forEach(bar => {
+                bar.style.width = bar.dataset.width || bar.style.width;
             });
         }, 100);
     }
 
-    // --- FUNÇÃO DO CARD DO PÓDIO ATUALIZADA ---
     function createPodiumCard(data, rank, maxValues) {
         const rankStatus = { 1: 'LÍDER ABSOLUTO', 2: 'EXCELENTE DESEMPENHO', 3: 'DESTAQUE NO PÓDIO' };
         const medals = { 1: '🥇', 2: '🥈', 3: '🥉' };
@@ -95,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return `
             <div class="podium-card rank-${rank} card-tilt"> 
-                <div class="scanline"></div> <!-- Linha animada -->
+                <div class="scanline"></div>
                 <div class="card-header">
                     <div class="rank-medal">${medals[rank]}</div>
                     <div class="name">${data.name}</div>
@@ -119,7 +130,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>`;
     }
 
-    // Renderiza o conteúdo e ativa os efeitos
     renderGoals();
     renderRankings();
     
