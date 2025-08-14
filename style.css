@@ -168,3 +168,243 @@ footer {
     .main-title-container h1 { font-size: 2.2rem; }
     header h2 { font-size: 1.8rem; }
 }
+:root {
+    /* --- PALETA DE CORES BASEADA NO LOGO --- */
+    --primary-color: #FDB813; /* Amarelo/Dourado do logo */
+    --accent-color: #004AAD; /* Azul forte do logo */
+    --secondary-color: #2a2a38;
+    --dark-color: #1c1c24;
+    --light-color: #F8F9FA;
+    --font-family: 'Poppins', sans-serif;
+    --gold: #FFD700;
+    --silver: #C0C0C0;
+    --bronze: #CD7F32;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Previne scroll horizontal do brilho */
+}
+
+/* --- EFEITO DE BRILHO DO MOUSE (NOVO) --- */
+#cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle at center, rgba(253, 184, 19, 0.08), transparent 50%);
+    border-radius: 50%;
+    pointer-events: none; /* Permite clicar através do elemento */
+    transform: translate(-50%, -50%);
+    z-index: -1; /* Coloca o brilho atrás de todo o conteúdo */
+    transition: width 0.3s, height 0.3s;
+}
+/* --- FIM DO EFEITO DE BRILHO --- */
+
+/* Título Principal com Logo */
+.main-title-container {
+    text-align: center;
+    padding: 2.5rem 1rem 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.main-logo {
+    height: 60px;
+    margin-bottom: 1rem;
+}
+
+.main-title-container h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    padding: 1.5rem 2rem;
+}
+
+header h2 {
+    font-size: 2.5rem;
+    color: var(--light-color);
+    margin: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Seção de Metas */
+.goals-section { text-align: center; padding: 2rem 0; margin-top: 4rem; }
+.goals-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
+.goals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+
+/* --- ESTILO DOS CARDS COM TILT (ATUALIZADO) --- */
+.goal-card {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #444;
+    text-align: center;
+    transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+    position: relative; /* Necessário para a borda brilhante */
+}
+
+.goal-icon { 
+    width: 36px; 
+    height: 36px; 
+    filter: invert(25%) sepia(89%) saturate(4598%) hue-rotate(211deg) brightness(96%) contrast(101%);
+}
+
+.goal-card h3 { font-size: 1.2rem; color: var(--primary-color); font-weight: 600; margin: 0; margin-bottom: 1.5rem; }
+.goal-progress-container { background-color: #444; border-radius: 10px; height: 15px; overflow: hidden; margin-bottom: 1rem; }
+.goal-progress-bar { 
+    height: 100%; 
+    width: 0; 
+    background-color: var(--accent-color); 
+    border-radius: 10px; 
+    transition: width 1.2s ease-out; 
+}
+.goal-details { font-size: 1rem; font-weight: 500; color: #ccc; margin-bottom: 0.25rem; }
+.goal-percentage { font-size: 1.3rem; font-weight: bold; color: var(--light-color); margin-top: 0.5rem; }
+
+/* Seção do Pódio */
+.podium-section { padding: 2rem 0; text-align: center; }
+.podium-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
+.podium-grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 1.5rem; }
+
+/* --- ESTILO DOS CARDS COM TILT (ATUALIZADO) --- */
+.podium-card {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: left;
+    border: 1px solid #444;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+    position: relative; /* Necessário para a borda brilhante */
+}
+
+/* --- EFEITO DE BORDA BRILHANTE (NOVO) --- */
+.podium-card::before, .goal-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 12px;
+    border: 2px solid transparent;
+    background: conic-gradient(from 180deg at 50% 50%, var(--primary-color), var(--accent-color), var(--primary-color)) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.podium-card:hover::before, .goal-card:hover::before {
+    opacity: 1;
+}
+/* --- FIM DO EFEITO DE BORDA --- */
+
+.podium-card.rank-1 { border: 2px solid var(--primary-color); box-shadow: 0 0 25px rgba(253, 184, 19, 0.3); }
+.podium-card.rank-2 { border-top: 5px solid var(--silver); }
+.podium-card.rank-3 { border-top: 5px solid var(--bronze); }
+.card-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.rank-position-large { font-size: 3.5rem; font-weight: 700; color: var(--primary-color); line-height: 1; }
+.card-header .name { font-size: 1.3rem; font-weight: 600; }
+.card-divider { border: 0; height: 1px; background-color: #444; margin: 0.5rem 0 1.5rem 0; }
+.card-status { color: var(--primary-color); font-weight: bold; text-align: center; margin-bottom: 1.5rem; font-size: 0.9rem; }
+.card-metrics { margin-bottom: 1rem; flex-grow: 1; }
+.metric-bar-container { margin-bottom: 1.5rem; }
+.metric-label { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem; }
+.metric-label span { color: #ccc; }
+.metric-label strong { color: var(--light-color); font-weight: 600; }
+.bar-background { height: 12px; background-color: #444; border-radius: 6px; overflow: hidden; }
+.bar-foreground { height: 100%; width: 0; background-color: var(--primary-color); border-radius: 6px; transition: width 0.8s ease-out; }
+
+/* Tabela do Ranking Geral */
+.general-ranking-section { text-align: center; }
+.general-ranking-section h2 { font-size: 2rem; margin-top: 4rem; margin-bottom: 2rem; }
+.table-container { background-color: var(--secondary-color); padding: 1rem; border-radius: 8px; overflow-x: auto; }
+#ranking-table { width: 100%; border-collapse: collapse; }
+#ranking-table th, #ranking-table td { padding: 1rem; text-align: left; border-bottom: 1px solid #444; }
+#ranking-table th { color: var(--primary-color); }
+.rank-position { font-weight: bold; text-align: center; }
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 3rem 1rem;
+    margin-top: 3rem;
+    background-color: var(--secondary-color);
+    border-top: 1px solid #444;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 2rem;
+}
+
+.footer-logo img {
+    height: 40px; 
+    width: auto;
+}
+
+.footer-logo span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--light-color);
+}
+
+.footer-credits p {
+    margin: 0.5rem 0;
+    color: #a0a0b0;
+    font-size: 0.9rem;
+}
+
+.footer-credits .names {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--light-color);
+    margin-bottom: 2rem;
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 2rem;
+}
+
+@media (max-width: 992px) {
+    .podium-grid { grid-template-columns: 1fr; }
+    .podium-card.rank-1 { order: -2; transform: scale(1); }
+    .podium-card.rank-2 { order: -1; }
+    .main-title-container h1 { font-size: 2.2rem; }
+    header h2 { font-size: 1.8rem; }
+    #cursor-glow { display: none; } /* Oculta o brilho do mouse em telas pequenas */
+}
