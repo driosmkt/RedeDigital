@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simão na Rede Digital - Ranking</title>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS Externo com Cache Busting -->
-    <link rel="stylesheet" href="style.css?v=2.1"> <!-- v=2.1 para garantir a atualização -->
+    <link rel="stylesheet" href="style.css?v=2.2"> <!-- v=2.2 para garantir a atualização -->
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CHWE9QKPGJ"></script>
@@ -22,16 +21,23 @@
       gtag('config', 'G-CHWE9QKPGJ');
     </script>
     
-    <!-- Biblioteca para o Efeito de Inclinação (Tilt) - ADICIONADO -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
-
 </head>
-<body>
+<body class="scanline-effect"> <!-- Adicionada classe para efeito scanline -->
 
     <!-- TÍTULO PRINCIPAL COM LOGO -->
     <div class="main-title-container">
         <img src="logo.png" alt="Logo Simão na Rede Digital" class="main-logo">
         <h1>Simão na Rede Digital</h1>
+
+        <!-- INDICADOR DE STATUS ONLINE (NOVO) -->
+        <div class="status-indicator">
+            <span class="ping-container">
+                <span class="animate-ping" style="background-color: #22c55e;"></span>
+                <span class="ping-dot" style="background-color: #22c55e;"></span>
+            </span>
+            STATUS: <span class="online">ONLINE</span>
+        </div>
     </div>
 
     <!-- Título da página de ranking -->
@@ -74,7 +80,7 @@
             <h2>Metas do Projeto</h2>
             <div class="goals-grid">
                 <!-- Meta de Servidores Cadastrados -->
-                <div class="goal-card card-tilt"> <!-- Adicionada classe 'card-tilt' -->
+                <div class="goal-card card-tilt">
                     <img src="https://www.gstatic.com/images/icons/material/system_gm/2x/group_gm_blue_24dp.png" alt="Ícone de Pessoas" class="goal-icon">
                     <h3>Servidores Cadastrados</h3>
                     <div class="goal-progress-container">
@@ -87,7 +93,7 @@
                 </div>
 
                 <!-- Meta de Seguidores -->
-                <div class="goal-card card-tilt"> <!-- Adicionada classe 'card-tilt' -->
+                <div class="goal-card card-tilt">
                     <img src="https://www.gstatic.com/images/icons/material/system/2x/camera_alt_gm_blue_24dp.png" alt="Ícone do Instagram" class="goal-icon">
                     <h3>Seguidores no Instagram</h3>
                     <div class="goal-progress-container">
@@ -104,15 +110,21 @@
 
     <!-- Rodapé -->
     <footer>
-        <div class="footer-logo">
-            <img src="logo.png" alt="Logo Simão na Rede Digital">
-            <span>Simão na Rede Digital</span>
-        </div>
+        <!-- RODAPÉ ATUALIZADO SEM LOGO -->
         <div class="footer-credits">
             <p>Núcleo Digital da Secretaria de Comunicação:</p>
             <p class="names">Raphael Rosendo e Douglas Rios</p>
         </div>
         <p class="footer-copyright">&copy; 2025 Prefeitura de Petrolina – Secretaria de Comunicação</p>
+        
+        <!-- INDICADOR CONECTADO (NOVO) -->
+        <div class="connection-status">
+            <span class="ping-container">
+                <span class="animate-ping"></span>
+                <span class="ping-dot"></span>
+            </span>
+            CONECTADO
+        </div>
     </footer>
 
     <!-- JavaScript Externo -->
