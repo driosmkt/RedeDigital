@@ -5,21 +5,14 @@
     --dark-color: #1c1c24;
     --light-color: #F8F9FA;
     --font-family: 'Poppins', sans-serif;
-    --gold: #FFD700;
-    --silver: #C0C0C0;
-    --bronze: #CD7F32;
     --cyan-tech: #22d3ee;
     --green-tech: #00ff87;
     --danger-color: #ef4444;
 }
 
 body {
-    font-family: var(--font-family);
-    margin: 0;
-    background-color: var(--dark-color);
-    color: var(--light-color);
-    line-height: 1.6;
-    overflow-x: hidden;
+    font-family: var(--font-family); margin: 0; background-color: var(--dark-color);
+    color: var(--light-color); line-height: 1.6; overflow-x: hidden;
 }
 
 #cursor-glow {
@@ -29,50 +22,51 @@ body {
     transition: width 0.3s, height 0.3s;
 }
 
-.main-title-container {
-    text-align: center; padding: 2.5rem 1rem 1rem 1rem; display: flex;
-    flex-direction: column; align-items: center; position: relative; z-index: 1;
+/* --- CABEÇALHO REESTRUTURADO --- */
+.page-header {
+    display: flex; flex-direction: column; align-items: center;
+    padding: 2.5rem 1rem 1rem 1rem; position: relative; z-index: 1;
 }
-.main-logo { height: 70px; margin-bottom: 0.5rem; }
-
+.logo-title-group {
+    display: flex; align-items: center; justify-content: center;
+    gap: 1.5rem; margin-bottom: 1rem;
+}
+.main-logo { height: 70px; }
+.title-text { text-align: left; }
+.title-text h2 {
+    font-size: 2.5rem; color: var(--light-color); margin: 0; font-weight: 600;
+    text-transform: uppercase; line-height: 1.2;
+}
+.title-text p {
+    font-size: 1.5rem; color: var(--primary-color); margin: 0;
+    font-weight: 600; text-transform: uppercase;
+}
 @keyframes ping { 75%, 100% { transform: scale(2); opacity: 0; } }
 .status-indicator {
     display: flex; align-items: center; font-family: monospace; color: var(--light-color);
-    font-size: 0.8rem; font-weight: bold; margin-top: 1rem; background-color: rgba(0,0,0,0.3);
+    font-size: 0.8rem; font-weight: bold; background-color: rgba(0,0,0,0.3);
     padding: 0.25rem 0.75rem; border-radius: 20px; border: 1px solid #444;
 }
 .ping-container { display: flex; position: relative; width: 0.6rem; height: 0.6rem; margin-right: 0.6rem; }
 .animate-ping { position: absolute; display: inline-flex; height: 100%; width: 100%; border-radius: 50%; opacity: 0.75; animation: ping 1.2s cubic-bezier(0, 0, 0.2, 1) infinite; }
 .ping-dot { position: relative; display: inline-flex; border-radius: 50%; height: 100%; width: 100%; }
 .status-indicator .online { color: #22c55e; margin-left: 0.4rem; }
+/* --- FIM DO CABEÇALHO --- */
 
 .container { max-width: 1200px; margin: 0 auto; padding: 1rem 2rem; position: relative; z-index: 1; }
-header { text-align: center; padding: 1.5rem 2rem; }
-header h2 { font-size: 2.5rem; color: var(--light-color); margin: 0; font-weight: 600; text-transform: uppercase; }
 
-.goals-section { text-align: center; padding: 2rem 0; margin-top: 4rem; }
-.goals-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
-.goals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-.goal-card { background-color: var(--secondary-color); padding: 2rem; border-radius: 12px; border: 1px solid #444; text-align: center; transition: transform 0.2s ease-out, box-shadow 0.3s ease; position: relative; }
-.goal-icon { width: 36px; height: 36px; filter: invert(25%) sepia(89%) saturate(4598%) hue-rotate(211deg) brightness(96%) contrast(101%); }
-.goal-card h3 { font-size: 1.2rem; color: var(--primary-color); font-weight: 600; margin: 0; margin-bottom: 1.5rem; }
-.goal-progress-container { background-color: #444; border-radius: 10px; height: 15px; overflow: hidden; margin-bottom: 1rem; }
-.goal-progress-bar { 
-    height: 100%; width: 0; 
-    background-image: linear-gradient(90deg, var(--cyan-tech), var(--green-tech));
-    border-radius: 10px; transition: width 1.8s ease-out; /* Animação mais lenta */
-}
-.goal-details { font-size: 1rem; font-weight: 500; color: #ccc; margin-bottom: 0.25rem; }
-.goal-percentage { font-size: 1.3rem; font-weight: bold; color: var(--light-color); margin-top: 0.5rem; }
-
-.podium-section { padding: 2rem 0; text-align: center; }
+/* Seção Pódio */
+.podium-section { text-align: center; }
 .podium-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
-.podium-grid { display: grid; grid-template-columns: repeat(3, 1fr); align-items: stretch; gap: 1.5rem; }
-
+.podium-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    align-items: flex-end; /* Alinha os cards na base para o efeito de pódio */
+    gap: 1.5rem;
+}
 @keyframes scanline-anim-card { from { top: 0%; } to { top: 100%; } }
 .podium-card {
-    background-color: var(--secondary-color); padding: 2rem; border-radius: 12px; text-align: left;
-    border: 1px solid #444; display: flex; flex-direction: column; height: 100%;
+    background-color: var(--secondary-color); padding: 2rem; border-radius: 12px;
+    border: 1px solid #444; display: flex; flex-direction: column;
     box-sizing: border-box; transition: transform 0.2s ease-out, box-shadow 0.3s ease;
     position: relative; overflow: hidden;
 }
@@ -83,16 +77,23 @@ header h2 { font-size: 2.5rem; color: var(--light-color); margin: 0; font-weight
     animation: scanline-anim-card 3s linear infinite alternate; z-index: 2; pointer-events: none;
 }
 
+/* --- NOVO LAYOUT DO PÓDIO (ESTILO DESKTOP) --- */
+.podium-card.rank-2 { order: 1; }
+.podium-card.rank-1 {
+    order: 2; /* 1º lugar no meio */
+    transform: translateY(-25px) scale(1.08); /* Mais alto e maior */
+    z-index: 10;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 30px rgba(253, 184, 19, 0.4);
+}
+.podium-card.rank-3 { order: 3; }
+/* --- FIM DO LAYOUT DO PÓDIO --- */
+
 .podium-card::before, .goal-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 12px; border: 2px solid transparent; background: conic-gradient(from 180deg at 50% 50%, var(--primary-color), var(--accent-color), var(--primary-color)) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); -webkit-mask-composite: destination-out; mask-composite: exclude; opacity: 0; transition: opacity 0.3s ease-in-out; }
 .podium-card:hover::before, .goal-card:hover::before { opacity: 1; }
-.podium-card.rank-1 { border: 2px solid var(--primary-color); box-shadow: 0 0 25px rgba(253, 184, 19, 0.3); }
-.podium-card.rank-2 { border-top: 5px solid var(--silver); }
-.podium-card.rank-3 { border-top: 5px solid var(--bronze); }
-
 .card-header { text-align: center; margin-bottom: 1.5rem; }
 .rank-medal { font-size: 3.5rem; line-height: 1; margin-bottom: 0.5rem; }
 .card-header .name { font-size: 1.5rem; font-weight: 700; color: var(--light-color); }
-
 .card-divider { border: 0; height: 1px; background-color: #444; margin: 0.5rem 0 1.5rem 0; }
 .card-status { color: var(--primary-color); font-weight: bold; text-align: center; margin-bottom: 1.5rem; font-size: 0.9rem; }
 .card-metrics { margin-bottom: 1rem; flex-grow: 1; }
@@ -107,6 +108,23 @@ header h2 { font-size: 2.5rem; color: var(--light-color); margin: 0; font-weight
     border-radius: 6px; transition: width 1.8s ease-out; /* Animação mais lenta */
 }
 
+/* Seção de Metas */
+.goals-section { text-align: center; padding: 2rem 0; margin-top: 4rem; }
+.goals-section h2 { font-size: 2.2rem; margin-bottom: 2rem; color: var(--light-color); }
+.goals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.goal-card { background-color: var(--secondary-color); padding: 2rem; border-radius: 12px; border: 1px solid #444; text-align: center; transition: transform 0.2s ease-out, box-shadow 0.3s ease; position: relative; }
+.goal-icon { width: 36px; height: 36px; fill: var(--accent-color); /* Corrigido para SVG */ }
+.goal-card h3 { font-size: 1.2rem; color: var(--primary-color); font-weight: 600; margin: 0; margin-bottom: 1.5rem; }
+.goal-progress-container { background-color: #444; border-radius: 10px; height: 15px; overflow: hidden; margin-bottom: 1rem; }
+.goal-progress-bar { 
+    height: 100%; width: 0; 
+    background-image: linear-gradient(90deg, var(--cyan-tech), var(--green-tech));
+    border-radius: 10px; transition: width 1.8s ease-out; /* Animação mais lenta */
+}
+.goal-details { font-size: 1rem; font-weight: 500; color: #ccc; margin-bottom: 0.25rem; }
+.goal-percentage { font-size: 1.3rem; font-weight: bold; color: var(--light-color); margin-top: 0.5rem; }
+
+/* Ranking Geral */
 .general-ranking-section { text-align: center; }
 .general-ranking-section h2 { font-size: 2rem; margin-top: 4rem; margin-bottom: 2rem; }
 .table-container { background-color: var(--secondary-color); padding: 1rem; border-radius: 8px; overflow-x: auto; }
@@ -114,7 +132,6 @@ header h2 { font-size: 2.5rem; color: var(--light-color); margin: 0; font-weight
 #ranking-table th, #ranking-table td { padding: 1rem; text-align: left; border-bottom: 1px solid #444; transition: background-color 0.3s; }
 #ranking-table th { color: var(--primary-color); }
 .rank-position { font-weight: bold; text-align: center; }
-
 tr.last-place {
     background-image: linear-gradient(to right, rgba(239, 68, 68, 0.15), rgba(239, 68, 68, 0.05));
     color: #fca5a5;
@@ -124,21 +141,28 @@ tr.last-place td:first-child::before {
     color: var(--danger-color);
 }
 
+/* Rodapé */
 footer { text-align: center; padding: 3rem 1rem; margin-top: 3rem; background-color: var(--secondary-color); border-top: 1px solid #444; position: relative; }
 .footer-credits p { margin: 0.5rem 0; color: #a0a0b0; font-size: 0.9rem; }
 .footer-credits .names { font-weight: 700; font-size: 1.2rem; color: var(--light-color); margin-bottom: 2rem; }
-.footer-copyright { font-size: 0.8rem; color: #888; margin-top: 2rem; }
-.connection-status { position: absolute; bottom: 1rem; right: 1.5rem; display: flex; align-items: center; font-family: monospace; font-size: 0.75rem; color: var(--primary-color); }
+.connection-status { margin: 1.5rem auto 0; display: inline-flex; align-items: center; font-family: monospace; font-size: 0.75rem; color: var(--primary-color); }
 .connection-status .ping-container { width: 0.5rem; height: 0.5rem; }
 .connection-status .animate-ping { background-color: var(--primary-color); }
 .connection-status .ping-dot { background-color: var(--primary-color); }
+.footer-copyright { font-size: 0.8rem; color: #888; margin-top: 2rem; }
 
 @media (max-width: 992px) {
-    .podium-grid { grid-template-columns: 1fr; }
-    .podium-card.rank-1 { order: -2; transform: scale(1); }
-    .podium-card.rank-2 { order: -1; }
-    .main-title-container h1 { font-size: 2.2rem; }
+    .podium-grid { grid-template-columns: 1fr; align-items: center; }
+    /* --- ORDEM DO PÓDIO EM MOBILE --- */
+    .podium-card.rank-1 { order: 1; transform: scale(1.05) translateY(0); } /* 1º no topo */
+    .podium-card.rank-2 { order: 2; }
+    .podium-card.rank-3 { order: 3; }
+    /* --- FIM DA ORDEM MOBILE --- */
+    .logo-title-group { flex-direction: column; gap: 0.5rem; }
+    .title-text { text-align: center; }
+    .title-text h2 { font-size: 1.8rem; }
+    .title-text p { font-size: 1.1rem; }
     header h2 { font-size: 1.8rem; }
-    .connection-status { position: static; justify-content: center; margin-top: 1.5rem; }
+    .connection-status { position: static; }
     #cursor-glow { display: none; }
 }
