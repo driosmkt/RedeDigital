@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <!-- CSS Externo com Cache Busting -->
-    <link rel="stylesheet" href="style.css?v=2.5"> <!-- v=2.5 para garantir a atualização -->
+    <link rel="stylesheet" href="style.css?v=2.6"> <!-- v=2.6 para garantir a atualização -->
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CHWE9QKPGJ"></script>
@@ -29,24 +29,27 @@
     <div class="page-header">
         <div class="logo-title-group">
             <img src="Logo-1.png" alt="Logo Simão na Rede Digital" class="main-logo">
+            <div class="header-divider"></div>
             <div class="title-text">
                 <h2>Corrida Digital</h2>
-                <p>das Secretarias</p>
+                <p>Das Secretarias</p>
             </div>
-        </div>
-        <div class="status-indicator">
-            <span class="ping-container">
-                <span class="animate-ping" style="background-color: #22c55e;"></span>
-                <span class="ping-dot" style="background-color: #22c55e;"></span>
-            </span>
-            STATUS: <span class="online">ONLINE</span>
         </div>
     </div>
 
     <main class="container">
         <!-- Seção do Pódio -->
         <section class="podium-section">
-            <h2>🏆 Pódio</h2>
+            <div class="podium-header">
+                <h2>🏆 Pódio</h2>
+                <div class="status-indicator">
+                    <span class="ping-container">
+                        <span class="animate-ping" style="background-color: #22c55e;"></span>
+                        <span class="ping-dot" style="background-color: #22c55e;"></span>
+                    </span>
+                    STATUS: <span class="online">ONLINE</span>
+                </div>
+            </div>
             <div class="podium-grid" id="podium-container">
                 <!-- Cards do pódio serão inseridos aqui via JavaScript -->
             </div>
@@ -54,7 +57,7 @@
 
         <!-- Seção do Ranking Geral -->
         <section class="general-ranking-section">
-            <h2>Ranking Geral</h2>
+            <h2>Posição das Demais Secretarias no Ranking</h2>
             <div class="table-container">
                 <table id="ranking-table">
                     <thead>
@@ -76,7 +79,7 @@
         <!-- Seção de Metas Principais -->
         <section class="goals-section">
             <h2>Metas do Projeto</h2>
-            <div class="goals-grid">
+            <div class="goals-grid three-columns"> <!-- Adicionada classe para 3 colunas -->
                 <!-- Meta de Servidores Cadastrados -->
                 <div class="goal-card card-tilt">
                     <img src="https://www.gstatic.com/images/icons/material/system_gm/2x/group_gm_blue_24dp.png" alt="Ícone de Pessoas" class="goal-icon">
@@ -92,7 +95,6 @@
 
                 <!-- Meta de Seguidores -->
                 <div class="goal-card card-tilt">
-                    <!-- ÍCONE DO INSTAGRAM (SVG) -->
                     <svg class="goal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                         <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9 26.3 26.2 58 34.4 93.9 36.2 37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
                     </svg>
@@ -105,27 +107,15 @@
                     </div>
                     <p class="goal-percentage" id="followers-percentage">0%</p>
                 </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Rodapé -->
-    <footer>
-        <div class="footer-credits">
-            <p>Núcleo Digital da Secretaria de Comunicação:</p>
-            <p class="names">Raphael Rosendo e Douglas Rios</p>
-        </div>
-        <div class="connection-status">
-            <span class="ping-container">
-                <span class="animate-ping"></span>
-                <span class="ping-dot"></span>
-            </span>
-            CONECTADO
-        </div>
-        <p class="footer-copyright">&copy; 2025 Prefeitura de Petrolina – Secretaria de Comunicação</p>
-    </footer>
-
-    <!-- JavaScript Externo -->
-    <script src="script.js"></script>
-</body>
-</html>
+                
+                <!-- NOVA META: Cadastro População -->
+                <div class="goal-card card-tilt">
+                    <svg class="goal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                        <path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64c13.3 0 24 10.7 24 24v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/>
+                    </svg>
+                    <h3>Cadastro População</h3>
+                    <div class="goal-progress-container">
+                        <div class="goal-progress-bar" id="population-progress-bar" style="width: 0%;"></div>
+                    </div>
+                    <div class="goal-details">
+      
