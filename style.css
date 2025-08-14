@@ -22,7 +22,6 @@ body {
     transition: width 0.3s, height 0.3s;
 }
 
-/* --- CABEÇALHO --- */
 .page-header {
     display: flex; justify-content: center;
     padding: 2.5rem 1rem 1rem 1rem; position: relative; z-index: 1;
@@ -56,9 +55,10 @@ body {
     gap: 1.5rem; flex-wrap: wrap; margin-bottom: 3.5rem;
 }
 .podium-header h2 { font-size: 2.2rem; color: var(--light-color); margin: 0; }
+/* --- NOVO GRID DO PÓDIO (1º À ESQUERDA) --- */
 .podium-grid {
     display: grid;
-    grid-template-columns: 1fr 1.1fr 1fr;
+    grid-template-columns: 1.1fr 1fr 1fr; /* 1º lugar um pouco maior */
     align-items: flex-start; /* Alinha pelo topo */
     gap: 1.5rem;
     padding-top: 30px; /* Espaço para o 1º lugar se destacar */
@@ -76,14 +76,16 @@ body {
     box-shadow: 0 0 8px rgba(253, 184, 19, 0.7);
     animation: scanline-anim-card 3s linear infinite alternate; z-index: 2; pointer-events: none;
 }
-.podium-card.rank-2 { order: 1; transform: translateY(30px); }
 .podium-card.rank-1 {
-    order: 2;
-    transform: scale(1.08);
+    transform: scale(1.08); /* Apenas aumenta a escala */
     z-index: 10; border: 2px solid var(--primary-color);
     box-shadow: 0 0 30px rgba(253, 184, 19, 0.4);
 }
-.podium-card.rank-3 { order: 3; transform: translateY(30px); }
+.podium-card.rank-2, .podium-card.rank-3 {
+    transform: translateY(30px); /* Empurra 2º e 3º para baixo */
+}
+/* --- FIM DA CORREÇÃO --- */
+
 .podium-card::before, .goal-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: 12px; border: 2px solid transparent; background: conic-gradient(from 180deg at 50% 50%, var(--primary-color), var(--accent-color), var(--primary-color)) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0); -webkit-mask-composite: destination-out; mask-composite: exclude; opacity: 0; transition: opacity 0.3s ease-in-out; }
 .podium-card:hover::before, .goal-card:hover::before { opacity: 1; }
 .card-header { text-align: center; margin-bottom: 1.5rem; }
@@ -157,6 +159,7 @@ footer { text-align: center; padding: 3rem 1rem; margin-top: 3rem; background-co
         padding-top: 0;
     }
     .podium-card { min-height: auto; }
+    /* Ordem correta no mobile e reseta as transformações */
     .podium-card.rank-1 { order: 1; transform: scale(1.05); }
     .podium-card.rank-2 { order: 2; transform: translateY(0); }
     .podium-card.rank-3 { order: 3; transform: translateY(0); }
