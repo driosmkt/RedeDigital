@@ -145,9 +145,9 @@ footer { text-align: center; padding: 3rem 1rem; margin-top: 3rem; background-co
 /* --- ESTILO ATUALIZADO DOS CRÉDITOS --- */
 .footer-credits p {
     margin: 0.25rem 0;
-    color: #a0a0b0;
-    font-size: 0.9rem;
-    font-weight: normal; /* Garante que não haja negrito */
+    color: var(--light-color); /* Cor branca */
+    font-size: 1.2rem;      /* Tamanho maior */
+    font-weight: 700;       /* Negrito */
 }
 /* --- FIM DA ATUALIZAÇÃO --- */
 .connection-status { display: flex; align-items: center; font-family: monospace; font-size: 0.75rem; color: var(--primary-color); }
