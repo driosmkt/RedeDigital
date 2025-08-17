@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const goalsData = {
         servers: { current: secretariatsData.reduce((sum, s) => sum + s.cadastros, 0), target: 1000 },
-        followers: { current: 103550, target: 150000 },
+        followers: { current: 103855, target: 150000 },
         population: { current: 0, target: 10000 }
     };
 
